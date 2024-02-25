@@ -113,19 +113,19 @@ class AuthLibrary
      */
     public function LoginUser($email, $rememberMe)
     {
-       
+   
         // GET USER DETAILS FROM DB
         $user = $this->AuthModel->where('email', $email)
             ->first();
 
         // CHECK TO SEE IF ACCOUNT IS ACTIVATED
-        if ($user['activated'] == false) {
-
-            // ACCOUNT NOT ACTIVATED SO SET LINK TO RESEND ACTIVATION EMAIL
-            $this->Session->setFlashData('danger', lang('Auth.notActivated'));
-            $this->Session->setFlashData('resetlink', '<a href="/auth/resendactivation/' . $user['id'] . '">Resend Activation Email</a>');
-            return false;
-        }
+//        if ($user['activated'] == false) {
+//
+//            // ACCOUNT NOT ACTIVATED SO SET LINK TO RESEND ACTIVATION EMAIL
+//            $this->Session->setFlashData('danger', lang('Auth.notActivated'));
+//            $this->Session->setFlashData('resetlink', '<a href="/auth/resendactivation/' . $user['id'] . '">Resend Activation Email</a>');
+//            return false;
+//        }
 
         // SET USER ID AS A VARIABLE
         $userID = $user['id'];
@@ -516,12 +516,10 @@ class AuthLibrary
     {   
         $data = [
             'id' => $user['id'],
-            'firstname' => $user['firstname'],
-            'lastname' => $user['lastname'],
+            'firstname' => $user['user_id'],
             'email' => $user['email'],
             'role' => $user['role'],
             'isLoggedIn' => true,
-            'ipaddress' => $this->request->getIPAddress(),
         ];
 
         $this->Session->set($data);
@@ -548,9 +546,7 @@ class AuthLibrary
             $logdata = [
                 'user_id' => $this->Session->get('id'),
                 'firstname' => $this->Session->get('firstname'),
-                'lastname' => $this->Session->get('lastname'),
                 'role' => $this->Session->get('role'),
-                'ip_address' => $this->request->getIPAddress(),
                 'date' => new Time('now'),
                 'successfull' => '1',
             ];
@@ -573,10 +569,10 @@ class AuthLibrary
      */
     public function loginlogFail($email)
     {
+       
         // FIND USER BY EMAIL
         $user = $this->AuthModel->where('email', $email)
             ->first();
-        
         if (!empty($user)) {
 
         // BUILD DATA TO ADD TO auth_logins TABLE

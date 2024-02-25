@@ -18,16 +18,23 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
-
 class AuthModel extends Model{
 
-    
-    protected $table = 'users';
-    protected $allowedFields = ['firstname', 'lastname', 'email', 'password', 'reset_token', 'reset_expire', 'activated', 'activate_token', 'activate_expire', 'role', 'updated_at', 'deleted_at'];
-    protected $beforeInsert = ['beforeInsert'];
-    protected $beforeUpdate = ['beforeUpdate'];  
+    protected $DBGroup = 'second_db'; 
+    protected $table = 'fa_users';
+    protected $defaultdb;
+//    protected $allowedFields = ['firstname', 'lastname', 'email', 'password', 'reset_token', 'reset_expire', 'activated', 'activate_token', 'activate_expire', 'role', 'updated_at', 'deleted_at'];
+//    protected $beforeInsert = ['beforeInsert'];
+//    protected $beforeUpdate = ['beforeUpdate'];  
 
-    
+     public function __construct()
+    {
+        parent::__construct();
+        
+        // Load the database and initialize the $assignRoles array in the constructor
+        $this->defaultdb = \Config\Database::connect();
+  
+    }
     /**
      * Runs before inserting data
      *
@@ -62,7 +69,6 @@ class AuthModel extends Model{
      */
     protected function passwordHash(array $data)
     {
-
         if (isset($data['data']['password']))
         $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_ARGON2ID);
         return $data;
@@ -75,11 +81,9 @@ class AuthModel extends Model{
      * @param  mixed $data
      * @return void
      */
-    public function LogLogin($data)
-    {
-        $this->db->table('auth_logins')
+    public function LogLogin($data){
+        $this->defaultdb->table('auth_logins')
                  ->insert($data);
-
     }
     
     /**
@@ -90,7 +94,7 @@ class AuthModel extends Model{
      */
     public function GetAuthTokenByUserId($userID)
     {
-        return $this->db->table('auth_tokens')
+        return $this->defaultdb->table('auth_tokens')
                            ->where('user_id',$userID)
                            ->get()
                            ->getRow();
@@ -105,7 +109,7 @@ class AuthModel extends Model{
      */
     public function insertToken($data)
     {
-        return $this->db->table('auth_tokens')
+        return $this->defaultdb->table('auth_tokens')
                         ->insert($data);
     }
     
@@ -117,7 +121,7 @@ class AuthModel extends Model{
      */
     public function updateToken($data)
     {
-        return $this->db->table('auth_tokens')
+        return $this->defaultdb->table('auth_tokens')
                         ->update($data);
     }
     
@@ -129,7 +133,7 @@ class AuthModel extends Model{
      */
     public function GetAuthTokenBySelector($selector)
     {
-        return $this->db->table('auth_tokens')
+        return $this->defaultdb->table('auth_tokens')
                         ->where('selector', $selector)
                         ->get()
                         ->getRow();
@@ -144,9 +148,10 @@ class AuthModel extends Model{
      */
     public function DeleteTokenByUserId($userID)
     {
-        return  $this->db->table('auth_tokens')
-                         ->where('user_id', $userID)
-                         ->delete();
+//        return  $this->db->table('auth_tokens')
+//                         ->where('user_id', $userID)
+//                         ->delete();
+        return true;
     }
     
     /**

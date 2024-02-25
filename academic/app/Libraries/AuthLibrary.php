@@ -117,7 +117,8 @@ class AuthLibrary
         // GET USER DETAILS FROM DB
         $user = $this->AuthModel->where('email', $email)
             ->first();
-
+//echo "<prE>";print_r($user);exit;
+$user['activated'] = true;//=passes because it is now connecting through the erp database
         // CHECK TO SEE IF ACCOUNT IS ACTIVATED
         if ($user['activated'] == false) {
 
@@ -516,10 +517,10 @@ class AuthLibrary
     {   
         $data = [
             'id' => $user['id'],
-            'firstname' => $user['firstname'],
-            'lastname' => $user['lastname'],
+            'firstname' => $user['user_id'],
+            'lastname' => "FROM ERP",//Due to it is now connected to the erp
             'email' => $user['email'],
-            'role' => $user['role'],
+            'role' => $user['role_id'],
             'isLoggedIn' => true,
             'ipaddress' => $this->request->getIPAddress(),
         ];
@@ -576,20 +577,19 @@ class AuthLibrary
         // FIND USER BY EMAIL
         $user = $this->AuthModel->where('email', $email)
             ->first();
-        
+         
         if (!empty($user)) {
 
         // BUILD DATA TO ADD TO auth_logins TABLE
             $logdata = [
             'user_id' => $user['id'],
-            'firstname' => $user['firstname'],
-            'lastname' => $user['lastname'],
-            'role' => $user['role'],
+            'firstname' => $user['user_id'],
+//            'lastname' => $user['lastname'],
+            'role' => $user['role_id'],
             'ip_address' => $this->request->getIPAddress(),
             'date' => new Time('now'),
             'successfull' => '0',
         ];
-
             // SAVE LOG DATA TO DB
             $this->AuthModel->LogLogin($logdata);
         }          

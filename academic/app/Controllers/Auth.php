@@ -58,10 +58,10 @@ class Auth extends BaseController
 
 		// IF ITS A POST REQUEST DO YOUR STUFF ELSE SHOW VIEW
 		if ($this->request->getMethod() == 'post') {
-
+   
 			//SET RULES
 			$rules = [
-				'email' => 'required|valid_email',
+				'email' => 'required',
 				'password' => 'required|min_length[6]|max_length[255]|validateUser[email,password]',
 			];
 
@@ -73,13 +73,13 @@ class Auth extends BaseController
 			];
 
 			if (!$this->validate($rules, $errors)) {
-
+                                   
 				$data['validation'] = $this->validator;
 
 				$this->Auth->loginlogFail($this->request->getVar('email'));
 
 			} else {				
-
+                               
 				// GET EMAIL & REMEMBER ME FROM POST
 				$email = $this->request->getVar('email');
 				$rememberMe = $this->request->getVar('rememberme');			

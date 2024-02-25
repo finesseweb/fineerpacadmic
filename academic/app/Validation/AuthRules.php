@@ -34,7 +34,9 @@ class AuthRules
             return false;
         }
         else{
-            return password_verify($data['password'], $user['password']);
+//            echo "<pre>".$data['password'];print_r($user);exit;
+//            return password_verify($data['password'], $user['password']);
+            return md5($data['password'])==$user['password'];
         }
 
     }
