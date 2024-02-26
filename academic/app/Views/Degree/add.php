@@ -4,7 +4,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Degree</h4>
-                    <form class="form-sample"method="post" action="/degree/add/">
+                    <form class="form-sample"method="post" action="<?= base_url()?>degree/add/">
                       <p class="card-description"> Degree Add </p>
                       <div class="row">
 					  <?php $validation = \Config\Services::validation();?>
@@ -147,7 +147,7 @@
 					    <div class="col-sm-3"></div>
 					   <div class="col-sm-9">
 					  <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-                      <button class="btn btn-light">Cancel</button>
+                       <a href="<?= base_url()?>degree" class="btn btn-light">Cancel</a>
 					  </div>
 					  </div>
                     </form>

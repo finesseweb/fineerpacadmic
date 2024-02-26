@@ -11,7 +11,7 @@
                     </div>
                 <?php endif; ?>
                 
-                <form method="POST" action="/university/store">
+                <form method="POST" action="<?= base_url()?>university/store">
                    <?= csrf_field() ?>
                     <div class="row">
                         <div class="col-md-6">
@@ -50,7 +50,7 @@
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9">
                                     <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-                                    <a href="/university" class="btn btn-light">Cancel</a>
+                                    <a href="<?= base_url()?>university" class="btn btn-light">Cancel</a>
                                 </div>
                             </div>
                         </div>

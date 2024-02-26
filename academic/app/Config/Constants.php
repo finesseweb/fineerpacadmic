@@ -93,5 +93,3 @@ define('EVENT_PRIORITY_NORMAL', 100);
  */
 define('EVENT_PRIORITY_HIGH', 10);
 
-//$protocol = 'http://localhost:8080/';
-   // defined('BASE') || define('BASE',$protocol);

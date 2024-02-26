@@ -12,7 +12,7 @@
 			  
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="degree/add" class="btn btn-gradient-primary btn-fw">Add</a></li>
+                  <li class="breadcrumb-item"><a href="<?= base_url()?>degree/add" class="btn btn-gradient-primary btn-fw">Add</a></li>
                 
                 </ol>
               </nav>

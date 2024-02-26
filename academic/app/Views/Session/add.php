@@ -4,7 +4,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Session</h4>
-                    <form class="form-sample"method="post" action="/session/add/">
+                    <form class="form-sample"method="post" action="<?= base_url()?>session/add/">
 					 <?= csrf_field() ?>
                       <p class="card-description"> Session Add </p>
                       <div class="row">
@@ -160,7 +160,7 @@
 					    <div class="col-sm-3"></div>
 					   <div class="col-sm-9">
 					  <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-                      <button class="btn btn-light">Cancel</button>
+                      <a href="<?= base_url()?>session" class="btn btn-light" class="btn btn-light">Cancel</a>
 					  </div>
 					  </div>
                     </form>

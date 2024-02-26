@@ -11,7 +11,7 @@
                     </div>
                 <?php endif; ?>
 
-                <form method="post" action="/university/update/<?= $university['university_id'] ?>">
+                <form method="post" action="<?= base_url()?>university/update/<?= $university['university_id'] ?>">
                     <?= csrf_field() ?>
 
                     <div class="row">
@@ -42,7 +42,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-gradient-primary mr-2">Update</button>
-                    <a href="/university" class="btn btn-light">Cancel</a>
+                    <a href="<?= base_url()?>university" class="btn btn-light">Cancel</a>
                 </form>
             </div>
         </div>

@@ -11,7 +11,7 @@
         <h3 class="page-title"> Academic Years </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/academicyears/create" class="btn btn-gradient-primary btn-fw">Add</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url()?>academicyears/create" class="btn btn-gradient-primary btn-fw">Add</a></li>
             </ol>
         </nav>
     </div>
@@ -21,7 +21,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Create Academic Year</h4>
-                    <form method="post" action="/academicyears/store">
+                    <form method="post" action="<?= base_url()?>academicyears/store">
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label for="academic_year_code">Academic Year Code</label>
@@ -58,7 +58,7 @@
                             </select>
                         </div>
                         <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
-                        <a href="/academicyears" class="btn btn-light">Cancel</a>
+                        <a href="<?= base_url()?>academicyears" class="btn btn-light">Cancel</a>
                     </form>
                 </div>
             </div>

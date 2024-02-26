@@ -21,7 +21,7 @@
         <div class="col-lg-12 stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="/academicyears/update/<?= $academicYear['academic_year_id']; ?>">
+                    <form method="post" action="<?= base_url()?>academicyears/update/<?= $academicYear['academic_year_id']; ?>">
                         <?= csrf_field() ?>
                         <div class="form-group">
                             <label for="academic_year_code">Academic Year Code</label>
@@ -64,7 +64,7 @@
                             </select>
                         </div>
                         <button type="submit" class="btn btn-gradient-primary mr-2">Update</button>
-                        <a href="/academicyears" class="btn btn-light">Cancel</a>
+                        <a href="<?= base_url()?>academicyears" class="btn btn-light">Cancel</a>
                     </form>
                 </div>
             </div>

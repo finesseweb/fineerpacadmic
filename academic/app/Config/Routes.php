@@ -128,6 +128,29 @@ $routes->get('professor/edit/(:num)', 'ProfessorController::edit/$1');
 $routes->post('professor/update/(:num)', 'ProfessorController::update/$1');
 $routes->get('professor/delete/(:num)', 'ProfessorController::delete/$1');
 
+
+$routes->get('feescategory', 'FeesCategoryController::index');
+$routes->get('feescategory/create', 'FeesCategoryController::create');
+$routes->post('feescategory/store', 'FeesCategoryController::store');
+$routes->get('feescategory/edit/(:num)', 'FeesCategoryController::edit/$1');
+$routes->post('feescategory/update/(:num)', 'FeesCategoryController::update/$1');
+$routes->get('feescategory/delete/(:num)', 'FeesCategoryController::delete/$1');
+
+
+$routes->get('feeshead', 'FeesHeadController::index');
+$routes->get('feeshead/create', 'FeesHeadController::create');
+$routes->post('feeshead/store', 'FeesHeadController::store');
+$routes->get('feeshead/edit/(:num)', 'FeesHeadController::edit/$1');
+$routes->post('feeshead/update/(:num)', 'FeesHeadController::update/$1');
+$routes->get('feeshead/delete/(:num)', 'FeesHeadController::delete/$1');
+
+
+$routes->get('feestructure', 'FeeStructureController::index');
+$routes->get('feestructure/create', 'FeeStructureController::create');
+$routes->post('feestructure/store', 'FeeStructureController::store');
+$routes->get('feestructure/edit/(:num)', 'FeeStructureController::edit/$1');
+$routes->post('feestructure/update/(:num)', 'FeeStructureController::update/$1');
+$routes->get('feestructure/delete/(:num)', 'FeeStructureController::delete/$1');
 //session raushan
 
 $routes->get('session', 'SessionController::index'); // Session

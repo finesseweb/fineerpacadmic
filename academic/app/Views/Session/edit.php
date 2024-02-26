@@ -5,7 +5,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Session</h4>
-                    <form class="form-sample"method="post" action="/session/edit/<?=$session['session_id']?>">
+                    <form class="form-sample"method="post" action="<?= base_url()?>session/edit/<?=$session['session_id']?>">
                       <p class="card-description"> Session Edit </p>
                       <div class="row">
 					  <?php $validation = \Config\Services::validation();

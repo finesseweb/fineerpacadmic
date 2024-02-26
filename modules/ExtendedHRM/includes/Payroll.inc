@@ -447,6 +447,23 @@ function kv_fiscalyears_list($name, $selected_id=null, $submit_on_change=false,$
 		'async' => true
 	) );
 }
+
+function kv_years_list($name, $selected_id=null, $submit_on_change=false,$all_oprtion = false){
+
+	$sql = "SELECT * FROM ".TB_PREF."year";
+
+// default to the company current fiscal year
+
+	return combo_input($name, $selected_id, $sql, 'id', '',
+	array(
+		'order' => 'begin',
+                 'spec_option' => $all_oprtion,
+		'default' => get_company_pref('f_year'),
+		'format' => '_format_fiscalyears',
+		'select_submit'=> $submit_on_change,
+		'async' => true
+	) );
+}
      
 
 function kv_fiscalyears_list_cells($label, $name, $selected_id=null, $submit_on_change=false,$all_option = false){
@@ -454,6 +471,15 @@ function kv_fiscalyears_list_cells($label, $name, $selected_id=null, $submit_on_
 		echo "<td>$label</td>\n";
 	echo "<td style='text:center;'>";
 	echo kv_fiscalyears_list($name, $selected_id, $submit_on_change,$all_option);
+	echo "</td>\n";
+}
+
+
+function kv_years_list_cells($label, $name, $selected_id=null, $submit_on_change=false,$all_option = false){
+	if ($label != null)
+		echo "<td>$label</td>\n";
+	echo "<td style='text:center;'>";
+	echo kv_years_list($name, $selected_id, $submit_on_change,$all_option);
 	echo "</td>\n";
 }
 

@@ -11,7 +11,7 @@
                     </div>
                 <?php endif; ?>
 
-                <form method="POST" action="/professor/update/<?= $professor['professor_id'] ?>">
+                <form method="POST" action="<?= base_url()?>professor/update/<?= $professor['professor_id'] ?>">
                     <?= csrf_field() ?>
                     <div class="row">
                         <div class="col-md-6">
@@ -46,7 +46,7 @@
                                 <div class="col-sm-9">
                                     <select class="form-control" name="department_id" required>
                                         <?php foreach ($department as $depart): ?>
-                                            <option value="<?= $depart['department_id'] ?>"><?= $depart['department_name'] ?></option>
+                                            <option value="<?= $depart['department_id'] ?>" <?= ($professor['department_id']==$depart['department_id']) ? 'selected' : '' ?>><?= $depart['department_name'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -73,7 +73,7 @@
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9">
                                     <button type="submit" class="btn btn-gradient-primary me-2">Update</button>
-                                    <a href="/caste" class="btn btn-light">Cancel</a>
+                                    <a href="<?= base_url()?>professor" class="btn btn-light">Cancel</a>
                                 </div>
                             </div>
                         </div>
