@@ -1,5 +1,5 @@
 
-<div class="content-wrapper">
+
     <?php if (session()->has('success')): ?>
         <p class="alert alert-success"><?= session('success') ?></p>
     <?php endif; ?>
@@ -8,33 +8,36 @@
         <p class="alert alert-danger"><?= session('error') ?></p>
     <?php endif; ?>
 
-    <div class="page-header">
-        <h3 class="page-title"> Edit Academic Year </h3>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/academicyears" class="btn btn-gradient-primary btn-fw">Back</a></li>
-            </ol>
-        </nav>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12 stretch-card">
+    <div class="main-panel">
+ <div class="row">
+<div class="col-12">
             <div class="card">
                 <div class="card-body">
+				  <h4 class="card-title">Edit Academic Year</h4>
                     <form method="post" action="<?= base_url()?>academicyears/update/<?= $academicYear['academic_year_id']; ?>">
                         <?= csrf_field() ?>
+						<div class="row">
+						 <div class="col-md-6">
                         <div class="form-group">
                             <label for="academic_year_code">Academic Year Code</label>
                             <input type="text" name="academic_year_code" id="academic_year_code" class="form-control" value="<?= $academicYear['academic_year_code']; ?>" required>
                         </div>
+						</div>
+						 <div class="col-md-6">
                         <div class="form-group">
                             <label for="start_date">Start Date</label>
                             <input type="date" name="start_date" id="start_date" class="form-control" value="<?= $academicYear['start_date']; ?>" required>
                         </div>
+						</div>
+						</div>
+						<div class="row">
+						 <div class="col-md-6">
                         <div class="form-group">
                             <label for="end_date">End Date</label>
                             <input type="date" name="end_date" id="end_date" class="form-control" value="<?= $academicYear['end_date']; ?>" required>
                         </div>
+						</div>
+						 <div class="col-md-6">
                         <div class="form-group">
                             <label for="university_id">Select University</label>
                             <select name="university_id" id="university_id" class="form-control" required>
@@ -46,6 +49,10 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
+						</div>
+						</div>
+						<div class="row">
+						 <div class="col-md-6">
                         <div class="form-group">
                             <label for="college_id">Select Colleges</label>
                             <select name="college_id[]" id="college_id" class="form-control" multiple required>
@@ -56,6 +63,8 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
+						</div>
+						 <div class="col-md-6">
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select name="status" id="status" class="form-control" required>
@@ -63,6 +72,8 @@
                                 <option value="inactive" <?= $academicYear['status'] == 'inactive' ? 'selected' : ''; ?>>Inactive</option>
                             </select>
                         </div>
+						</div>
+						</div>
                         <button type="submit" class="btn btn-gradient-primary mr-2">Update</button>
                         <a href="<?= base_url()?>academicyears" class="btn btn-light">Cancel</a>
                     </form>

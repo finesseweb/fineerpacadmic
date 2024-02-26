@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+
     <?php if (session()->has('success')): ?>
         <p class="alert alert-success"><?= session('success') ?></p>
     <?php endif; ?>
@@ -7,34 +7,38 @@
         <p class="alert alert-danger"><?= session('error') ?></p>
     <?php endif; ?>
 
-    <div class="page-header">
-        <h3 class="page-title"> Academic Years </h3>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= base_url()?>academicyears/create" class="btn btn-gradient-primary btn-fw">Add</a></li>
-            </ol>
-        </nav>
-    </div>
+   
 
-    <div class="row">
-        <div class="col-lg-12 stretch-card">
+ <div class="main-panel">
+ <div class="row">
+<div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Create Academic Year</h4>
                     <form method="post" action="<?= base_url()?>academicyears/store">
                         <?= csrf_field() ?>
+						<div class="row">
+						 <div class="col-md-6">
                         <div class="form-group">
                             <label for="academic_year_code">Academic Year Code</label>
                             <input type="text" name="academic_year_code" id="academic_year_code" class="form-control" required>
                         </div>
+						</div>
+						 <div class="col-md-6">
                         <div class="form-group">
                             <label for="start_date">Start Date</label>
                             <input type="date" name="start_date" id="start_date" class="form-control" required>
                         </div>
+						</div>
+						</div>
+						<div class="row">
+						 <div class="col-md-6">
                         <div class="form-group">
                             <label for="end_date">End Date</label>
                             <input type="date" name="end_date" id="end_date" class="form-control" required>
                         </div>
+						</div>
+						 <div class="col-md-6">
                         <div class="form-group">
                             <label for="university_id">Select University</label>
                             <select name="university_id" id="university_id" class="form-control" required>
@@ -44,12 +48,18 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
+						</div>
+						</div>
+						<div class="row">
+						 <div class="col-md-6">
                         <div class="form-group">
                             <label for="college_ids[]">Select Colleges</label>
                             <select name="college_ids[]" id="college_ids" class="form-control" multiple required>
                                 <!-- Options will be populated dynamically using JavaScript -->
                             </select>
                         </div>
+						</div>
+						<div class="col-md-6">
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select name="status" id="status" class="form-control" required>
@@ -57,6 +67,8 @@
                                 <option value="inactive">Inactive</option>
                             </select>
                         </div>
+						</div>
+						</div>
                         <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
                         <a href="<?= base_url()?>academicyears" class="btn btn-light">Cancel</a>
                     </form>
