@@ -24,8 +24,7 @@ use Config\Auth;
 use Config\Email;
 use Config\App;
 use \Config\Services;
-    
-
+ 
 
 /**
  * AuthLibrary
@@ -41,7 +40,8 @@ class AuthLibrary
         $this->AppConfig = new App;
         $this->Session = session();
         $this->request = Services::request();
-        
+
+// Now you can access the defined access levels and security areas
     }
 
     /*
@@ -117,8 +117,8 @@ class AuthLibrary
         // GET USER DETAILS FROM DB
         $user = $this->AuthModel->where('email', $email)
             ->first();
-//echo "<prE>";print_r($user);exit;
-$user['activated'] = true;//=passes because it is now connecting through the erp database
+        //echo "<prE>";print_r($user);exit;
+        $user['activated'] = true;//=passes because it is now connecting through the erp database
         // CHECK TO SEE IF ACCOUNT IS ACTIVATED
         if ($user['activated'] == false) {
 
@@ -515,6 +515,7 @@ $user['activated'] = true;//=passes because it is now connecting through the erp
      */
     public function setUserSession($user)
     {   
+               
         $data = [
             'id' => $user['id'],
             'firstname' => $user['user_id'],
@@ -524,10 +525,11 @@ $user['activated'] = true;//=passes because it is now connecting through the erp
             'isLoggedIn' => true,
             'ipaddress' => $this->request->getIPAddress(),
         ];
-
+                $securityRolesModel =  new \App\Models\SecondDbModel();
+                $securityRoles = $securityRolesModel->where('id', $user['role_id'])->first();
+                $data['areas'] = explode(';',$securityRoles['areas']);
         $this->Session->set($data);
         $this->loginlog();
-
         return true;
     }
 
@@ -842,7 +844,9 @@ $user['activated'] = true;//=passes because it is now connecting through the erp
 
         // AUTO REDIRECTS BASED ON ROLE 
         $redirect = $this->config->assignRedirect;
-
+        if($this->Session->get('role')>3)
+        return '/superadmin';
+             
         return  $redirect[$this->Session->get('role')];
 
     }

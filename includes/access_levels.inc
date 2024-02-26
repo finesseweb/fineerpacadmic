@@ -449,90 +449,17 @@ $security_areas =array(
     //-----------------ACADEMIC--------------------------------------------//    Startts
     
     //masters
-        'SA_ACAD_CLASS' => array(SS_ACAD_M | 1, _("Class")),
-        'SA_ACAD_BATCH' => array(SS_ACAD_M | 2, _("Batch")),
-        'SA_ACAD_DEPARTMENT' => array(SS_ACAD_M | 3, _("Department")),
-        'SA_ACAD_COURSE_CAT' => array(SS_ACAD_M | 4, _("Course Category")),
-        'SA_ACAD_COURSE_TYPE' => array(SS_ACAD_M | 5, _("Course Type")),
-        'SA_ACAD_E_LEARN_C' => array(SS_ACAD_M | 6, _("Experential LEarning Component")),
-        'SA_ACAD_FEE_CAT' => array(SS_ACAD_M | 7, _("Fee Cat")),
-        'SA_ACAD_RATING' => array(SS_ACAD_M | 8, _("Rating")),
-        'SA_ACAD_QUESTION' => array(SS_ACAD_M | 9, _("Question")),
-        'SA_ACAD_CREDIT' => array(SS_ACAD_M | 10, _("Credit")),
-        'SA_ACAD_FEE_HEADS' => array(SS_ACAD_M | 11, _("Fee Heads")),
-        'SA_ACAD_SECTION' => array(SS_ACAD_M | 12, _("Section")),
-        'SA_ACAD_ROOM' => array(SS_ACAD_M | 13, _("Room")),
-        'SA_ACAD_TIME_TABLE' => array(SS_ACAD_M | 14, _("Time Table")),
-        'SA_ACAD_COURSE' => array(SS_ACAD_M | 15, _("Course")),
-        'SA_ACAD_COURSE_FEE' => array(SS_ACAD_M | 33,_('Exam Fee')),
-        'SA_ACAD_CORE_COURSE' => array(SS_ACAD_M | 16, _("Core Course")),
-        'SA_ACAD_EC_LEARN' => array(SS_ACAD_M | 17, _("Elective Course Learning")),
-        'SA_ACAD_E_LEARN' => array(SS_ACAD_M | 18, _("Exprential Learning")),
-        'SA_ACAD_REF_GRADE' => array(SS_ACAD_M | 19, _("Refrence Grade")),
-        'SA_ACAD_PROG_DESIGN' => array(SS_ACAD_M | 20, _("Program Design")),
-        'SA_ACAD_PROG_CAL_YEAR' => array(SS_ACAD_M | 21, _("Program Calendar Year")),
-        'SA_ACAD_FEE_STRUCTURE' => array(SS_ACAD_M | 22, _("Fee Structure")),
-        'SA_ACAD_SCHOLAR_SHIP' => array(SS_ACAD_M | 23, _("Scholar Ship")),
-        'SA_ACAD_PART_SCHOLAR_SHIP' => array(SS_ACAD_M | 24, _("Participants Scholar ship")),
-        'SA_ACAD_INTERACTIVE_LEARNING_SESSION' => array(SS_ACAD_M | 25, _("Interactive Learning Sessions")),
-        'SA_ACAD_FEED_TEMPLATE' => array(SS_ACAD_M | 26, _("Feed BAck Templates")),
-        'SA_ACAD_TERM_VIEW' => array(SS_ACAD_M | 27, _("Term View")),
-        'SA_ACAD_CORE_COURSE_LEARN' => array(SS_ACAD_M | 28, _("Core Course Learn")),
-        'SA_ACAD_E_LEARN_DESIGN_VIEW' => array(SS_ACAD_M | 29, _("Exprential Learn Desing View")),
-        'SA_ACAD_PROG_CAL_VIEW' => array(SS_ACAD_M | 30, _("Program Calendar View")),
-        'SA_ACAD_GLOBAL_SET' => array(SS_ACAD_M | 31, _("Global Settings")),
-        'SA_ACAD_TERM_MASTER' => array(SS_ACAD_M | 32, _("Term Master")),
-	'SA_ACAD_ROOMMAPPING' => array(SS_ACAD_M | 34, _("Room Mapping")),
+          'SA_ACAD_DEGREE' => array(SS_ACAD_M | 1, ("Degree")),
+    'SA_ACAD_CASTE_CATEGORY' => array(SS_ACAD_M | 2, ("Caste Category")),
+    'SA_ACAD_CASTE' => array(SS_ACAD_M | 3, ("Caste")),
+    'SA_ACAD_UNIVERSITY' => array(SS_ACAD_M | 4, ("University")),
+    'SA_ACAD_COLLEGE' => array(SS_ACAD_M | 5, ("College")),
+    'SA_ACAD_ACADEMIC_YEAR' => array(SS_ACAD_M | 6, ("Academic Year")),
+    'SA_ACAD_DEPARTMENT' => array(SS_ACAD_M | 7, ("Department")),
+    'SA_ACAD_PAPER' => array(SS_ACAD_M | 8, ("Paper")),
+   
     
-      //transaction
-        'SA_ACAD_TO_DO_LIST' => array(SS_ACAD_T | 1, _("To Do List")),
-     //faculty Portal);
-        'SA_ACAD_FACULTY_ALLOTMENT' => array(SS_ACAD_FP | 1, _("Faculty Allotment")),
-        'SA_ACAD_LEARNING_ALOTMENT' => array(SS_ACAD_FP | 2, _("Exprential Learning Allotment")),
-        'SA_ACAD_EVALUATION_COMPONENT' => array(SS_ACAD_FP | 3, _("Evaluation Component")),
-        'SA_ACAD_GRADE_ALLOCATION' => array(SS_ACAD_FP | 4, _("Grade Allocation")),
-        'SA_ACAD_E_GRADE_ALLOCATION' => array(SS_ACAD_FP | 5, _("Exprential Grade Allocation")),
-        'SA_ACAD_REVIEW_PUBLISH' => array(SS_ACAD_FP | 6, _("Review And Publish")),
-        'SA_ACAD_LEARNING_PROJECT' => array(SS_ACAD_FP | 7, _("Exprential Learning Project")),
-        'SA_ACAD_LEARN_PROJECT_ALLOCATION' => array(SS_ACAD_FP | 8, _("Exprential Learning Project Allocation ")),
-        'SA_ACAD_NOTIFICATION' => array(SS_ACAD_FP | 9, _("Notification Push")),
-        'SA_ACAD_ASSIGNMENT' => array(SS_ACAD_FP | 10, _("Participants Assignment")),
-                
-     //participants
-        'SA_ACAD_ENROLLMENT' => array(SS_ACAD_P | 1, _("Participants Enrollment")),
-        'SA_ACAD_E_SELECTION' => array(SS_ACAD_P | 2, _("Elective Selection")),
-        'SA_ACAD_APPLICATION_FORM' => array(SS_ACAD_P | 3, _("Application Form")),
-                
-    //Reports
-        'SA_ACAD_GRADE_REPORT' => array(SS_ACAD_R | 1, _("Course Wise Grade Report")),
-        'SA_ACAD_PENALTIES_REPORT' => array(SS_ACAD_R | 2, _("Course Wise Penalties Report")),
-        'SA_ACAD_AFTER_PENALTIES' => array(SS_ACAD_R | 3, _("Course Grade After Penalties")),
-        'SA_ACAD_CGPA_GPA' => array(SS_ACAD_R | 4, _("Participants GPA/CGPA")),
-        'SA_ACAD_TERM_GRADE_SHEET' => array(SS_ACAD_R | 5, _("Generate Term Wise Grade Sheet")),
-        'SA_ACAD_FINAL GRADE' => array(SS_ACAD_R | 6, _("Generate Final Grade")),
-        'SA_ACAD_DIRECT_FINAL_GRADE' => array(SS_ACAD_R | 7, _("Direct Final Grade")),
-                
-    //Attendance
-        'SA_ACAD_P_ATTENDANCE' => array(SS_ACAD_A | 1, _("Participant Attendance")),
-        'SA_ACAD_ATTENDANCE_REPORT' => array(SS_ACAD_A | 2, _("Attendance Report")),
-    
-     //LMS
-        'SA_ACAD_BM' => array(SS_ACAD_L | 1, _("Book Managemnt")),
-        'SA_ACAD_BH' => array(SS_ACAD_L | 2, _("Hold Book List")),
-        'SA_ACAD_BE' => array(SS_ACAD_L | 3, _("Book Extension")),
-    
-    
-    //SA_ACAD_ADDEVENT
-        'SA_ACAD_ADDEVENT' => array(SS_ACAD_EV | 1,("Add Event")),
-        'SA_ACAD_EVENTLIST' => array(SS_ACAD_EV | 2,("Event List")),
-        'SA_ACAD_EVENTCATEGORY' => array(SS_ACAD_EV | 3,("Event Category")),
-    
-    //Seating Arrangment
-        'SS_ACAD_OPERATION' => array(SS_ACAD_SA | 1,("Seating Plan")),
-        'SS_ACAD_STUDENT' => array(SS_ACAD_SA | 2,("Add Student")),
-        'SS_ACAD_DURATION' => array(SS_ACAD_SA | 3, "Duration"),
-        'SS_ACAD_EXAMBATCH' => array(SS_ACAD_SA | 4,"Exam Batch"),
-                
+  
     //-----------------------------Academic Access ----------// Acadmic Ends
     
     
