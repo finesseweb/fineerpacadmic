@@ -5,7 +5,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Year</h4>
-                    <form class="form-sample"method="post" action="/year/edit/<?=$year['year_id']?>"">
+                    <form class="form-sample"method="post" action="<?= base_url()?>year/edit/<?=$year['year_id']?>"">
                       <p class="card-description"> Year Edit </p>
                       <div class="row">
 					  <?php $validation = \Config\Services::validation();

@@ -30,6 +30,8 @@ class App extends BaseConfig
      * @var string[]
      * @phpstan-var list<string>
      */
+	 
+	 
     public array $allowedHostnames = [];
 
     /**
@@ -58,7 +60,7 @@ class App extends BaseConfig
      *
      * WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
      */
-    public string $uriProtocol = 'REQUEST_URI';
+    public string $uriProtocol = 'PATH_INFO';
 
     /**
      * --------------------------------------------------------------------------

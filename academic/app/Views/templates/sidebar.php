@@ -39,6 +39,7 @@
               </a>
               <div class="collapse" id="general-pages">
                 <ul class="nav flex-column sub-menu">
+
                     <?php if(in_array(SA_ACAD_DEGREE,$roleValue)) { ?>
                 <li class="nav-item"> <a class="nav-link" href="degree"> Degree </a></li>
                 <?php }?>
@@ -67,6 +68,10 @@
 				<li class="nav-item"> <a class="nav-link" href="papers"> Papers </a></li>
                                   <?php } ?>
 				<li class="nav-item"> <a class="nav-link" href="professor"> Professor </a></li>
+
+				<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>feescategory"> Fee Category </a></li>
+				<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>feeshead"> Fee Head </a></li>
+				<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>feestructure"> Fee Structure </a></li>
                 </ul>
               </div>
             </li>

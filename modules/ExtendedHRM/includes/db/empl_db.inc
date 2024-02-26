@@ -758,8 +758,8 @@ function get_empl_approved_leaves(array $leave_query,$table_name){
 function get_employee_leave_count_fiscalyear($year,$empl_id){
       //display_error($year);
      // die();
-	//$sql = "SELECT * FROM ".TB_PREF."kv_empl_attendancee WHERE year=".db_escape($year)." AND empl_id=".db_escape($empl_id)." AND cal_year = ". date("Y");
-	$sql = "SELECT * FROM ".TB_PREF."kv_empl_attendancee WHERE  empl_id=".db_escape($empl_id);
+	$sql = "SELECT * FROM ".TB_PREF."kv_empl_attendancee WHERE year=".db_escape($year)." AND empl_id=".db_escape($empl_id)." AND cal_year = ". date("Y");
+	//$sql = "SELECT * FROM ".TB_PREF."kv_empl_attendancee WHERE  empl_id=".db_escape($empl_id);
         if(!empty($year))
             $sql.=" AND year = ". db_escape($year);
 	$result  = db_query($sql,"could not get leave count yearly");

@@ -11,7 +11,7 @@
         <h3 class="page-title"> Course </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/courses/create" class="btn btn-gradient-primary btn-fw">Add</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url()?>courses/create" class="btn btn-gradient-primary btn-fw">Add</a></li>
             </ol>
         </nav>
     </div>
@@ -42,7 +42,7 @@
                                     <td><?= $course['college_name'] ?></td>
 									 <td><?= $course['status'] ?></td>
                                     <td>
-                                        <a class="btn btn-gradient-dark btn-icon-text" href="/courses/edit/<?= $course['course_id'] ?>">
+                                        <a class="btn btn-gradient-dark btn-icon-text" href="<?= base_url()?>courses/edit/<?= $course['course_id'] ?>">
                                             <i class="mdi mdi-file-check btn-icon-append">Edit</i>
                                         </a>
                                         <!-- Other table data -->

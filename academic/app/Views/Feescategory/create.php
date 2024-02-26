@@ -3,35 +3,41 @@
 <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Create University</h4>
-                
+                <h4 class="card-title">Create Category</h4>
+
                 <?php if (isset($validation)): ?>
                     <div class="alert alert-danger">
                         <?= $validation->listErrors() ?>
                     </div>
                 <?php endif; ?>
-                
-                <form method="POST" action="<?= base_url()?>university/store">
-                   <?= csrf_field() ?>
+
+                <form method="POST" action="<?= base_url()?>feescategory/store">
+                    <?= csrf_field() ?>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">University Name</label>
+                                <label class="col-sm-3 col-form-label"> Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="university_name" required />
+                                    <input type="text" class="form-control" name="fee_category_name" required />
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">University Location</label>
+                                <label class="col-sm-3 col-form-label">College</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="university_location" required />
+                                    <select class="form-control" name="college_id" required>
+                                        <?php foreach ($colleges as $college): ?>
+                                            <option value="<?= $college['college_id'] ?>"><?= $college['college_name'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    
+					 <div class="row">
+					 
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Status</label>
@@ -50,7 +56,7 @@
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9">
                                     <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-                                    <a href="<?= base_url()?>university" class="btn btn-light">Cancel</a>
+                                    <a href="<?= base_url()?>feescategory" class="btn btn-light">Cancel</a>
                                 </div>
                             </div>
                         </div>

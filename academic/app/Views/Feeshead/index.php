@@ -8,10 +8,10 @@
     <?php endif; ?>
 
     <div class="page-header">
-        <h3 class="page-title"> Castes </h3>
+        <h3 class="page-title"> Fee Head </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= base_url()?>caste/create" class="btn btn-gradient-primary btn-fw">Add</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url()?>feeshead/create" class="btn btn-gradient-primary btn-fw">Add</a></li>
             </ol>
         </nav>
     </div>
@@ -20,27 +20,29 @@
         <div class="col-lg-12 stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Caste List</h4>
+                    <h4 class="card-title">Head List</h4>
                     <table class="table table-striped table-bordered" id="example">
                         <thead>
                             <tr class="table-info">
                                 <th>Sl No</th>
-                                <th>Caste Name</th>
-                                <th>Caste Category</th>
+                                <th>Name</th>
+								<th>Category Name</th>
+								<th>College Name</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php $slNo = 1; ?>
-                            <?php foreach ($castes as $caste): ?>
+                            <?php foreach ($fees as $fee): ?>
                                 <tr>
                                     <td><?= $slNo++ ?></td>
-                                    <td><?= $caste['caste_name'] ?></td>
-                                    <td><?= $caste['caste_category_name'] ?></td>
-                                    <td><?= $caste['status'] ?></td>
+									<td><?= $fee['fee_head_name']?></td>
+                                    <td><?= $fee['fee_category_name']?></td>
+									 <td><?= $fee['college_name'] ?></td>
+									 <td><?= $fee['status'] ?></td>
                                     <td>
-                                        <a class="btn btn-gradient-dark btn-icon-text" href="<?= base_url()?>caste/edit/<?= $caste['caste_id'] ?>">
+                                        <a class="btn btn-gradient-dark btn-icon-text" href="<?= base_url()?>feeshead/edit/<?= $fee['fee_head_id'] ?>">
                                             <i class="mdi mdi-file-check btn-icon-append">Edit</i>
                                         </a>
                                         <!-- Other table data -->

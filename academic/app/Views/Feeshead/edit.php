@@ -3,7 +3,7 @@
 <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Create Department</h4>
+                <h4 class="card-title">Edit Head</h4>
 
                 <?php if (isset($validation)): ?>
                     <div class="alert alert-danger">
@@ -11,34 +11,36 @@
                     </div>
                 <?php endif; ?>
 
-                <form method="POST" action="<?= base_url()?>department/store">
+                <form method="POST" action="<?= base_url()?>feeshead/update/<?= $fees['fee_head_id'] ?>">
                     <?= csrf_field() ?>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Department Name</label>
+                                <label class="col-sm-3 col-form-label"> Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="department_name" required />
+                                    <input type="text" class="form-control" name="fee_head_name" value="<?= $fees['fee_head_name'] ?>" required />
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        
+					<div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Degree Name</label>
+                                <label class="col-sm-3 col-form-label">Fees Category</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="degree_id" required>
-                                        <?php foreach ($degrees as $degree): ?>
-                                            <option value="<?= $degree['id'] ?>"><?= strtoupper($degree['name']) ?></option>
+                                    <select class="form-control" name="fee_category_id" required>
+                                        <?php foreach ($feescategorys as $feescategory): ?>
+                                            <option value="<?= $feescategory['fee_category_id'] ?>"><?= $feescategory['fee_category_name'] ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-					 <div class="col-md-6">
+                    	
+					 <div class="row">
+						 <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">College Name</label>
+                                <label class="col-sm-3 col-form-label">College</label>
                                 <div class="col-sm-9">
                                     <select class="form-control" name="college_id" required>
                                         <?php foreach ($colleges as $college): ?>
@@ -53,8 +55,8 @@
                                 <label class="col-sm-3 col-form-label">Status</label>
                                 <div class="col-sm-9">
                                     <select class="form-control" name="status" required>
-                                        <option value="active">Active</option>
-                                        <option value="inactive">Inactive</option>
+                                        <option value="active" <?= ($fees['status'] == 'active') ? 'selected' : '' ?>>Active</option>
+                                        <option value="inactive" <?= ($fees['status'] == 'inactive') ? 'selected' : '' ?>>Inactive</option>
                                     </select>
                                 </div>
                             </div>
@@ -65,8 +67,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9">
-                                    <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-                                    <a href="<?= base_url()?>department" class="btn btn-light">Cancel</a>
+                                    <button type="submit" class="btn btn-gradient-primary me-2">Update</button>
+                                    <a href="<?= base_url()?>feeshead" class="btn btn-light">Cancel</a>
                                 </div>
                             </div>
                         </div>

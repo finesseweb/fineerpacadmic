@@ -4,7 +4,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Year</h4>
-                    <form class="form-sample"method="post" action="/year/add/">
+                    <form class="form-sample"method="post" action="<?= base_url()?>year/add/">
                       <p class="card-description"> Year Add </p>
                       <div class="row">
 					  <?php $validation = \Config\Services::validation();?>
@@ -147,7 +147,7 @@
 					    <div class="col-sm-3"></div>
 					   <div class="col-sm-9">
 					  <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
-                      <button class="btn btn-light">Cancel</button>
+                      <a href="<?= base_url()?>year" class="btn btn-light">Cancel</s>
 					  </div>
 					  </div>
                     </form>

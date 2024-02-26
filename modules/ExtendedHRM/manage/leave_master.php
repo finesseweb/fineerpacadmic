@@ -402,7 +402,7 @@ if ($Mode == 'ADD_ITEM' && can_process()) {
 
 if ($Mode == 'UPDATE_ITEM' && can_process()) {
     //display_error("sdff");die;
-    update_leaves($selected_id, $_POST['fisc_year'], $_POST['designation_group_id'], $_POST['desig_id'], $_POST['dept_id'], $_POST['no_of_cls'], $_POST['no_of_pls'], $_POST['no_of_medical_ls'],$_POST['no_of_el'], $_POST['no_of_spl_cls'], $_POST['no_of_spl_cls_female'], $_POST['no_of_mat_ls'], $_POST['no_of_patern_ls'],$_POST['no_of_cls_acess'],$_POST['no_of_pls_acess'],$_POST['no_of_el_acess'],$_POST['no_of_medical_ls_acess'],$_POST['no_of_spl_cls_acess'],$_POST['no_of_spl_cls_female_acess'], $_POST['no_of_mat_ls_acess'], $_POST['no_of_patern_ls_acess'], date2sql($_POST['no_of_cls_date']), date2sql($_POST['no_of_pls_date']),date2sql($_POST['no_of_el_date']),date2sql($_POST['no_of_medical_ls_date']), $_POST['cal_year']);
+    update_leaves($selected_id, $_POST['fisc_year'], $_POST['designation_group_id'], $_POST['desig_id'], $_POST['dept_id'], $_POST['no_of_cls'], $_POST['no_of_pls'], $_POST['no_of_medical_ls'],$_POST['no_of_el'], $_POST['no_of_spl_cls'], $_POST['no_of_spl_cls_female'], $_POST['no_of_mat_ls'], $_POST['no_of_patern_ls'],$_POST['no_of_cls_acess'],$_POST['no_of_pls_acess'],$_POST['no_of_el_acess'],$_POST['no_of_medical_ls_acess'],$_POST['no_of_spl_cls_acess'],$_POST['no_of_spl_cls_female_acess'], $_POST['no_of_mat_ls_acess'], $_POST['no_of_patern_ls_acess'], date2sql($_POST['no_of_cls_date']), date2sql($_POST['no_of_pls_date']),date2sql($_POST['no_of_el_date']),date2sql($_POST['no_of_medical_ls_date']), $_POST['cal_year'],$_POST['empl_id'],$_POST['pre_leave']);
     $Mode = 'RESET';
     display_notification(_('Leaves has been updated'));
 }
@@ -724,6 +724,7 @@ if ($selected_id != -1) {
         $_POST['no_of_spl_cls_female_acess'] = $myrow["acess_spl_female"];
         $_POST['no_of_mat_ls_acess'] = $myrow["acess_mat"];
         $_POST['no_of_patern_ls_acess'] = $myrow["acess_pat"];
+        $_POST['empl_id'] = $myrow["empl_id"];
         $last_id = $myrow["empl_id"];
         $edit_empl_id = $myrow['cal_year'];
         
@@ -765,7 +766,7 @@ employee_list_cells(_("Select an Employee: "), 'empl_id', $last_id, _('Select Em
 }
 
 //desigroup_list_row( _("Designation :"), 'desigroup_id', null);
-//text_row_ex(_("Name:"), 'name', 50);
+text_cells(_("Name:"), 'name', $cl_date,false,false,false,false,false,false,false,true);
 // leavetype_list_row(_("Leave Type:"), 'type_leave', null, false, false);
 text_row_ex(_("No. of Casual Leaves :"), 'no_of_cls', 4, null, null, '00', null, " Days", false,false,'',true,$cl_date);
 

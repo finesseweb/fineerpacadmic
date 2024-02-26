@@ -1095,6 +1095,9 @@ function update_leaves($selected_id,$fisc_year, $desig_group_id, $desig_id, $dep
 
    	db_query($sql,"The Leaves could not be updated");
         
+    add_leaves_records($emplid,$cal_year,$no_of_cls,$pre_leaves);    
+        
+        
 }
 function get_cl_empl($selected_id){
 	$sql = "SELECT * FROM ".TB_PREF."kv_leave_master  WHERE empl_id=".db_escape($selected_id);

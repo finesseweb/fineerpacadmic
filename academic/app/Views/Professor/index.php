@@ -11,7 +11,7 @@
         <h3 class="page-title"> Professor </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/professor/create" class="btn btn-gradient-primary btn-fw">Add</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url()?>professor/create" class="btn btn-gradient-primary btn-fw">Add</a></li>
             </ol>
         </nav>
     </div>
@@ -43,7 +43,7 @@
 									 <td><?= $professor['department_name'] ?></td>
 									 <td><?= $professor['status'] ?></td>
                                     <td>
-                                        <a class="btn btn-gradient-dark btn-icon-text" href="/professor/edit/<?= $professor['professor_id'] ?>">
+                                        <a class="btn btn-gradient-dark btn-icon-text" href="<?= base_url()?>professor/edit/<?= $professor['professor_id'] ?>">
                                             <i class="mdi mdi-file-check btn-icon-append">Edit</i>
                                         </a>
                                         <!-- Other table data -->

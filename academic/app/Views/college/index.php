@@ -12,7 +12,7 @@
 			  
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="/college/create" class="btn btn-gradient-primary btn-fw">Add</a></li>
+                  <li class="breadcrumb-item"><a href="<?= base_url()?>college/create" class="btn btn-gradient-primary btn-fw">Add</a></li>
                 </ol>
               </nav>
             </div>
@@ -40,7 +40,7 @@
             <td><?= $college['university_name'] ?></td>
             <td><?= $college['status'] ?></td>
             <td>
-                <a class="btn btn-gradient-dark btn-icon-text" href="/college/edit/<?= $college['college_id'] ?>" class="btn btn-info btn-sm"><i class="mdi mdi-file-check btn-icon-append">Edit</i></a>
+                <a class="btn btn-gradient-dark btn-icon-text" href="<?= base_url()?>college/edit/<?= $college['college_id'] ?>" class="btn btn-info btn-sm"><i class="mdi mdi-file-check btn-icon-append">Edit</i></a>
                 <!-- Other table data -->
             </td>
         </tr>

@@ -11,7 +11,7 @@
                     </div>
                 <?php endif; ?>
 
-                <form method="POST" action="/caste/update/<?= $caste['caste_id'] ?>">
+                <form method="POST" action="<?= base_url()?>caste/update/<?= $caste['caste_id'] ?>">
                     <?= csrf_field() ?>
                     <div class="row">
                         <div class="col-md-6">
@@ -54,7 +54,7 @@
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-9">
                                     <button type="submit" class="btn btn-gradient-primary me-2">Update</button>
-                                    <a href="/caste" class="btn btn-light">Cancel</a>
+                                    <a href="<?= base_url()?>caste" class="btn btn-light">Cancel</a>
                                 </div>
                             </div>
                         </div>

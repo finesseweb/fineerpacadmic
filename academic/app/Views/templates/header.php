@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Academic Admin</title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="public/assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="public/assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="<?= base_url()?>public/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>public/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="public/assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url()?>public/assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="public/assets/images/favicon.ico" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
@@ -54,7 +54,7 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="nav-profile-img">
-                  <img src="public/assets/images/faces/face1.jpg" alt="image">
+                  <img src="<?= base_url()?>public/assets/images/faces/face1.jpg" alt="image">
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
@@ -62,7 +62,7 @@
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                <a class="dropdown-item" href="/assetmanagement/academic<?php echo $redirect[session()->get('role')] ?>/profile">
+                <a class="dropdown-item" href="<?= base_url()?><?php echo $redirect[session()->get('role')] ?>/profile">
                   <i class="mdi mdi-cached me-2 text-success"></i> Profile </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="logout">

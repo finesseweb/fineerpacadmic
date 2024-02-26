@@ -1909,7 +1909,8 @@ switch (get_post('_tabs_sel')) {
     case 'leave':
         br(1);
         
-         echo "<center>"; kv_fiscalyears_list_cells(_("Fiscal Year:"), 'f_year', null, true,'All Fiscal Year'); echo "</center>";
+         echo "<center>"; calendar_list_row(_("Calendar Year:"), 'cal_yearc',$_POST['cal_yearc'], false, true);
+//kv_fiscalyears_list_cells(_("Fiscal Year:"), 'f_year', null, true,'All Fiscal Year'); echo "</center>";
         empl_leave_data($selected_id,$_POST['f_year']);
         $Ajax->activate('details');
         break;
