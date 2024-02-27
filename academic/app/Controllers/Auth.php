@@ -87,6 +87,7 @@ class Auth extends BaseController
 				// PASS TO LIBRARY
 				$this->Auth->Loginuser($email, $rememberMe);
 
+                                //echo $this->Auth->autoRedirect(); die;
 				// REDIRECT 
 				return redirect()->to($this->Auth->autoRedirect());
 				

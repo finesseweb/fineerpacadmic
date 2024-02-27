@@ -115,9 +115,9 @@ class AuthLibrary
     {
        
         // GET USER DETAILS FROM DB
-        $user = $this->AuthModel->where('email', $email)
+        $user = $this->AuthModel->where('user_id', $email)
             ->first();
-        //echo "<prE>";print_r($user);exit;
+//        echo "<prE>";print_r($user);exit;
         $user['activated'] = true;//=passes because it is now connecting through the erp database
         // CHECK TO SEE IF ACCOUNT IS ACTIVATED
         if ($user['activated'] == false) {
@@ -845,7 +845,7 @@ class AuthLibrary
         // AUTO REDIRECTS BASED ON ROLE 
         $redirect = $this->config->assignRedirect;
         if($this->Session->get('role')>3)
-        return '/superadmin';
+        return $redirect[1];
              
         return  $redirect[$this->Session->get('role')];
 

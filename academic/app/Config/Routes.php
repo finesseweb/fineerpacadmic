@@ -57,8 +57,8 @@ $routes->get('/', 'Auth::login');
  * SUPER ADMIN ROUTES. MUST BE LOGGED IN AND HAVE ROLE OF '1'
  * --------------------------------------------------------------------
  */
-
-$routes->group('', ['filter' => 'auth:Role,1'], function ($routes) {
+//
+//$routes->group('', ['filter' => 'auth:Role,1'], function ($routes) {
 
 	$routes->get('superadmin', 'Superadmin::index'); // SUPER ADMIN DASHBOARD
 	$routes->match(['get', 'post'], 'superadmin/profile', 'Auth::profile'); 
@@ -174,7 +174,7 @@ $routes->get('academicyear/getCollegesByUniversity/(:num)', 'AcademicYearControl
 
 
 
-});
+//});
 
 
 /**

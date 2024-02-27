@@ -27,7 +27,7 @@ class AuthRules
     {
 
         $model = new AuthModel();
-        $user = $model->where('email', $data['email'])
+        $user = $model->where('user_id', $data['email'])
                       ->first();
 
         if (!$user) {
@@ -44,7 +44,7 @@ class AuthRules
     public function validateExists(string $str, string $fields, array $data)
     {
         $model = new AuthModel();
-        $user = $model->where('email', $data['email'])
+        $user = $model->where('user_id', $data['email'])
         ->first();
 
         if (!$user) {

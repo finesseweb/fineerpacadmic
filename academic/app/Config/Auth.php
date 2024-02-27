@@ -62,6 +62,7 @@ class Auth extends BaseConfig
         '1' => '/superadmin',
         '2' => '/dashboard',
         '3' => '/customerportal',
+        '9' => '/superadmin',
     ];
 
     /**
@@ -242,18 +243,5 @@ class Auth extends BaseConfig
      */
     public $resetEmailSubject = 'Reset Your Password';
     
-        public function __construct()
-    {
-        // Fetch security roles from the database
-        $securityRolesModel =  new \App\Models\SecondDbModel();
-        $securityRoles = $securityRolesModel->findAll();
-        // Initialize the $assignRoles array
-        $this->assignRoles = [];
-        foreach ($securityRoles as $role) {
-            $this->assignRoles[$role['role']] = $role['id'];
-        }
 
-        // Call the parent constructor
-        parent::__construct();
-    }
 }
