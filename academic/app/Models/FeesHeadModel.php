@@ -19,7 +19,7 @@ class FeesHeadModel extends Model
     ];
 
     protected $validationRules = [
-	    'fee_head_name' => 'required|min_length[3]|max_length[255]',
+	    'fee_head_name.*' => 'required|min_length[3]|max_length[255]',
 		'fee_category_id' => 'required|integer',
 		'college_id' => 'required|integer',
 		'status' => 'required|in_list[active,inactive]',

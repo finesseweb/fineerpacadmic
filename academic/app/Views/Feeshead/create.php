@@ -14,14 +14,19 @@
                 <form method="POST" action="<?= base_url()?>feeshead/store">
                     <?= csrf_field() ?>
                     <div class="row">
-                        <div class="col-md-6">
+					 <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-3 col-form-label"> Name</label>
+                                <label class="col-sm-3 col-form-label">College</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="fee_head_name" required />
+                                    <select class="form-control" name="college_id" required>
+                                        <?php foreach ($colleges as $college): ?>
+                                            <option value="<?= $college['college_id'] ?>"><?= $college['college_name'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>
+                        
                          <div class="col-md-6">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Fees Category</label>
@@ -37,18 +42,7 @@
                     </div>
                     
 					 <div class="row">
-					  <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">College</label>
-                                <div class="col-sm-9">
-                                    <select class="form-control" name="college_id" required>
-                                        <?php foreach ($colleges as $college): ?>
-                                            <option value="<?= $college['college_id'] ?>"><?= $college['college_name'] ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+					
                         <div class="col-md-6">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Status</label>
@@ -61,6 +55,23 @@
                             </div>
                         </div>
                     </div>
+					<div class="row" >
+					 <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label"> Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="fee_head_name[]" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                              
+                            </div>
+                        </div>
+                    </div>
+					<div class="row" id="customFields">
+					</div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
@@ -69,6 +80,11 @@
                                     <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                                     <a href="<?= base_url()?>feeshead" class="btn btn-light">Cancel</a>
                                 </div>
+                            </div>
+                        </div>
+						  <div class="col-md-6">
+                            <div class="form-group row">
+                                <a href="javascript:void(0);" id="addCF" class='btn btn-gradient-success me-2'>+ Add More</a>
                             </div>
                         </div>
                     </div>

@@ -45,7 +45,7 @@ class FeesHeadController extends Controller
         
 		$data['colleges'] = $this->collegeModel->findAllActiveColleges();
 		$data['fees'] = $this->feecategoryModel->findAllActivefeesCategory();
-        $this->loadCommonViews('feeshead/create', $data);
+        $this->loadCommonViews('Feeshead/create', $data);
     }
 
     public function store()
@@ -53,25 +53,27 @@ class FeesHeadController extends Controller
         $feehaedModel = $this->feehaedModel;
         $validationRules = $feehaedModel->getValidationRules();
 //print_r($validationRules); die();
-
+///print_r($_POST); die();
         
         if ($this->request->getMethod() === 'post' && $this->validate($validationRules)) {
 			
-			
-            // Save caste data
+			for ($i=0;$i<count($this->request->getPost('fee_head_name'));$i++) {
+				$heads=$this->request->getPost('fee_head_name'); 
+           // print_r($heads[$i]); die();
             $feehaedModel->save([
-                'fee_head_name' => $this->request->getPost('fee_head_name'),
+                'fee_head_name' => $heads[$i],
 				'college_id' => $this->request->getPost('college_id'),
 				'fee_category_id' => $this->request->getPost('fee_category_id'),
                 'status' => $this->request->getPost('status'),
             ]);
-
+            }
             return redirect()->to('/feeshead')->with('success', 'Head added successfully');
         }
           
        
 		$data['colleges'] = $this->collegeModel->findAllActiveColleges();
-		 $this->loadCommonViews('feeshead/create', $data);
+		$data['fees'] = $this->feecategoryModel->findAllActivefeesCategory();
+		 $this->loadCommonViews('Feeshead/create', $data);
     }
 
     public function edit($id)
@@ -86,7 +88,7 @@ class FeesHeadController extends Controller
 		$data['feescategorys'] = $this->feecategoryModel->findAllActivefeesCategory();
 		//$data['degrees'] = $this->degreeModel->GetData();
 		//$data['department'] = $this->departmentModel->findAllActiveDepartments();
-        $this->loadCommonViews('feeshead/edit', $data);
+        $this->loadCommonViews('Feeshead/edit', $data);
     }
 
     public function update($id)
@@ -116,7 +118,7 @@ class FeesHeadController extends Controller
 		$data['feescategorys'] = $this->feecategoryModel->findAllActivefeesCategory();
 		//$data['degrees'] = $this->degreeModel->GetData();
 		//$data['department'] = $this->departmentModel->findAllActiveDepartments();
-        $this->loadCommonViews('feeshead/edit', $data);
+        $this->loadCommonViews('Feeshead/edit', $data);
     }
 
     public function delete($id)
@@ -124,10 +126,10 @@ class FeesHeadController extends Controller
         $course = $this->courseModel->find($id);
 
         if (!$course) {
-            return redirect()->to('/courses')->with('error', 'Course not found');
+            return redirect()->to('/Feeshead')->with('error', 'Course not found');
         }
 
         $this->courseModel->delete($id);
-        return redirect()->to('/courses')->with('success', 'Course deleted successfully');
+        return redirect()->to('/Feeshead')->with('success', 'Course deleted successfully');
     }
 }
