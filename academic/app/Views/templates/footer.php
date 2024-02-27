@@ -53,6 +53,17 @@
     table.buttons().container()
         .appendTo( '#example_wrapper .col-md-6:eq(0)' );
 } );
+
+
+$(document).ready(function(){
+    $("#addCF").click(function(){
+		
+$("#customFields").append('<div class="row" id="customFields1"><div class="col-md-6"><div class="form-group row"><label class="col-sm-3 col-form-label"> Name</label><div class="col-sm-9"><input type="text" class="form-control" name="fee_head_name[]" /></div></div></div><div class="col-md-6"><div class="form-group row"><a href="javascript:void(0);" class="remCF">Remove</a></div></div> </div>');
+    });
+    $("#customFields").on('click','.remCF',function(){
+        $(this).parent().parent().parent().remove();
+    });
+});
 	</script>
     <!-- End custom js for this page -->
   </body>
