@@ -39,14 +39,11 @@ class Auth implements FilterInterface
         // REDIRECT BACK
 
         if (!empty($arguments)) {
-    
-            $role = $arguments['1'];          
-
+  //  
+            $role = $arguments['1'];       
             if ($role != session()->get('role')) {
-                
                 return redirect()->back();
             }
-           
         }
     }
 
@@ -54,6 +51,7 @@ class Auth implements FilterInterface
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
+//        echo "<pre>"; print_r($response);exit;
         // Do something here
     }
 }

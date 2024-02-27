@@ -1,4 +1,10 @@
+<?php
 
+ require_once(APPPATH . 'Libraries/access_level.php');
+  $accesslevel = new accessLevel();
+  $roleValue = session('areas');
+
+?>
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
@@ -33,22 +39,39 @@
               </a>
               <div class="collapse" id="general-pages">
                 <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>degree"> Degree </a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>academicyears"> Academic Year </a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>castecategory">Caste Category </a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>caste">Caste </a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>university">University </a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>college">College </a></li>
-			    <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>year"> Year </a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>session"> Session </a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>department"> Department </a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>courses"> Course </a></li>
-				<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>papers"> Papers </a></li>
-				<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>professor"> Professor </a></li>
+
+                    <?php if(in_array(SA_ACAD_DEGREE,$roleValue)) { ?>
+                <li class="nav-item"> <a class="nav-link" href="degree"> Degree </a></li>
+                <?php }?>
+               <?php if(in_array(SA_ACAD_ACADEMIC_YEAR,$roleValue)) { ?>
+                <li class="nav-item" > <a class="nav-link" href="academicyears"> Academic Year </a></li>
+               <?php }?>
+                <?php if(in_array(SA_ACAD_CASTE_CATEGORY,$roleValue)) { ?>
+                <li class="nav-item"> <a class="nav-link" href="castecategory">Caste Category </a></li>
+                <?php }?>
+                <?php if(in_array(SA_ACAD_CASTE,$roleValue)) { ?>
+                <li class="nav-item"> <a class="nav-link" href="caste">Caste </a></li>
+                <?php }?>
+                <?php if(in_array(SA_ACAD_UNIVERSITY,$roleValue)) { ?>
+                <li class="nav-item"> <a class="nav-link" href="university">University </a></li>
+                <?php } ?>
+                 <?php if(in_array(SA_ACAD_COLLEGE,$roleValue)) { ?>
+                <li class="nav-item"> <a class="nav-link" href="college">College </a></li>
+                 <?php } ?>
+			    <li class="nav-item"> <a class="nav-link" href="year"> Year </a></li>
+                <li class="nav-item"> <a class="nav-link" href="session"> Session </a></li>
+                   <?php if(in_array(SA_ACAD_DEPARTMENT,$roleValue)) { ?>
+                <li class="nav-item"> <a class="nav-link" href="department"> Department </a></li>
+                  <?php } ?>
+                <li class="nav-item"> <a class="nav-link" href="courses"> Course </a></li>
+                 <?php if(in_array(SA_ACAD_PAPER,$roleValue)) { ?>
+				<li class="nav-item"> <a class="nav-link" href="papers"> Papers </a></li>
+                                  <?php } ?>
+				<li class="nav-item"> <a class="nav-link" href="professor"> Professor </a></li>
+
 				<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>feescategory"> Fee Category </a></li>
 				<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>feeshead"> Fee Head </a></li>
 				<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>feestructure"> Fee Structure </a></li>
-				
                 </ul>
               </div>
             </li>

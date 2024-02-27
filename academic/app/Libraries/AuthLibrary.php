@@ -24,8 +24,7 @@ use Config\Auth;
 use Config\Email;
 use Config\App;
 use \Config\Services;
-    
-
+ 
 
 /**
  * AuthLibrary
@@ -41,7 +40,8 @@ class AuthLibrary
         $this->AppConfig = new App;
         $this->Session = session();
         $this->request = Services::request();
-        
+
+// Now you can access the defined access levels and security areas
     }
 
     /*
@@ -117,7 +117,8 @@ class AuthLibrary
         // GET USER DETAILS FROM DB
         $user = $this->AuthModel->where('email', $email)
             ->first();
-
+        //echo "<prE>";print_r($user);exit;
+        $user['activated'] = true;//=passes because it is now connecting through the erp database
         // CHECK TO SEE IF ACCOUNT IS ACTIVATED
         if ($user['activated'] == false) {
 
@@ -514,19 +515,21 @@ class AuthLibrary
      */
     public function setUserSession($user)
     {   
+               
         $data = [
             'id' => $user['id'],
-            'firstname' => $user['firstname'],
-            'lastname' => $user['lastname'],
+            'firstname' => $user['user_id'],
+            'lastname' => "FROM ERP",//Due to it is now connected to the erp
             'email' => $user['email'],
-            'role' => $user['role'],
+            'role' => $user['role_id'],
             'isLoggedIn' => true,
             'ipaddress' => $this->request->getIPAddress(),
         ];
-
+                $securityRolesModel =  new \App\Models\SecondDbModel();
+                $securityRoles = $securityRolesModel->where('id', $user['role_id'])->first();
+                $data['areas'] = explode(';',$securityRoles['areas']);
         $this->Session->set($data);
         $this->loginlog();
-
         return true;
     }
 
@@ -576,20 +579,19 @@ class AuthLibrary
         // FIND USER BY EMAIL
         $user = $this->AuthModel->where('email', $email)
             ->first();
-        
+         
         if (!empty($user)) {
 
         // BUILD DATA TO ADD TO auth_logins TABLE
             $logdata = [
             'user_id' => $user['id'],
-            'firstname' => $user['firstname'],
-            'lastname' => $user['lastname'],
-            'role' => $user['role'],
+            'firstname' => $user['user_id'],
+//            'lastname' => $user['lastname'],
+            'role' => $user['role_id'],
             'ip_address' => $this->request->getIPAddress(),
             'date' => new Time('now'),
             'successfull' => '0',
         ];
-
             // SAVE LOG DATA TO DB
             $this->AuthModel->LogLogin($logdata);
         }          
@@ -842,7 +844,9 @@ class AuthLibrary
 
         // AUTO REDIRECTS BASED ON ROLE 
         $redirect = $this->config->assignRedirect;
-
+        if($this->Session->get('role')>3)
+        return '/superadmin';
+             
         return  $redirect[$this->Session->get('role')];
 
     }
