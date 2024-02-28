@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class CollegeModel extends Model
 {
-    protected $table = 'Colleges';
+    protected $table = 'colleges';
     protected $primaryKey = 'college_id';
 
     protected $allowedFields = ['college_name', 'university_id', 'status'];
@@ -19,9 +19,9 @@ class CollegeModel extends Model
     ];
         public function getActiveCollegesWithUniversities()
     {
-        return $this->select('Colleges.*, Universities.university_name')
-            ->join('Universities', 'Colleges.university_id = Universities.university_id')
-            ->where('Universities.status', 'active')
+        return $this->select('colleges.*, universities.university_name')
+            ->join('universities', 'colleges.university_id = universities.university_id')
+            ->where('universities.status', 'active')
             ->findAll();
     }
     

@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class CasteCategoryModel extends Model
 {
-    protected $table = 'CasteCategory';
+    protected $table = 'castecategory';
     protected $primaryKey = 'caste_category_id';
     protected $allowedFields = ['caste_category_name', 'status'];
     

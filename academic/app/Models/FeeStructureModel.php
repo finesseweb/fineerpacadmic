@@ -20,7 +20,7 @@ class FeeStructureModel extends Model
 
     protected $validationRules = [
 	    'academic_year_id' => 'required|integer',
-		'caste_category_id' => 'required|integer',
+		
 		'college_id' => 'required|integer',
 		'status' => 'required|in_list[active,inactive]',
 		
@@ -32,10 +32,7 @@ class FeeStructureModel extends Model
            'integer' => 'The Category name field must be an integer.',
         ],
 		
-        'caste_category_id' => [
-            'required' => 'The Category name field is required.',
-            'integer' => 'The Category name field must be an integer.',
-        ],
+        
         'college_id' => [
             'required' => 'The College name field is required.',
             'integer' => 'The College name field must be an integer.',
@@ -51,9 +48,9 @@ class FeeStructureModel extends Model
     
     public function findAllActivefeeshead()
     {
-        return $this->select('feestructures.*,academicyears.academic_year_code,castecategory.caste_category_name,colleges.college_name')
+        return $this->select('feestructures.*,academicyears.academic_year_code,colleges.college_name')
              ->join('academicyears', 'feestructures.academic_year_id = academicyears.academic_year_id')
-			 ->join('castecategory', 'feestructures.caste_category_id = castecategory.caste_category_id')
+			// ->join('castecategory', 'feestructures.caste_category_id = castecategory.caste_category_id')
 			 ->join('colleges', 'feestructures.college_id = colleges.college_id')
             ->where('feestructures.status', 'active')
             ->findAll();

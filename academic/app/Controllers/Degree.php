@@ -38,7 +38,7 @@ class Degree extends BaseController
 		
 		echo view('templates/header');
 		echo view('templates/sidebar');
-		echo view('degree/index',$data);
+		echo view('Degree/index',$data);
 		echo view('templates/footer');
 		
 	}
@@ -90,7 +90,7 @@ class Degree extends BaseController
 		}
 		echo view('templates/header');
 		echo view('templates/sidebar');
-		echo view('degree/add');
+		echo view('Degree/add');
 		echo view('templates/footer');
 		
 	}
@@ -134,7 +134,7 @@ class Degree extends BaseController
         $data['degree'] = $result;
 		echo view('templates/header');
 		echo view('templates/sidebar');
-		echo view('degree/edit',$data);
+		echo view('Degree/edit',$data);
 		echo view('templates/footer');
 		
 	}

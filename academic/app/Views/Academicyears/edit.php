@@ -66,12 +66,23 @@
 						</div>
 						 <div class="col-md-6">
                         <div class="form-group">
-                            <label for="status">Status</label>
+                            <label for="Cast">Cast Category implementation</label>
+                            <select name="cast_cat" id="cast_cat" class="form-control" required>
+                                <option value="no" <?= $academicYear['cast_cat'] == 'no' ? 'selected' : ''; ?>>No</option>
+                                <option value="yes" <?= $academicYear['cast_cat'] == 'yes' ? 'selected' : ''; ?>>Yes</option>
+                            </select>
+                        </div>
+						</div>
+						</div>
+						<div class="row">
+						 <div class="col-md-6">
+                        <div class="form-group">
+						<label for="status">Status</label>
                             <select name="status" id="status" class="form-control" required>
                                 <option value="active" <?= $academicYear['status'] == 'active' ? 'selected' : ''; ?>>Active</option>
                                 <option value="inactive" <?= $academicYear['status'] == 'inactive' ? 'selected' : ''; ?>>Inactive</option>
                             </select>
-                        </div>
+						</div>
 						</div>
 						</div>
                         <button type="submit" class="btn btn-gradient-primary mr-2">Update</button>

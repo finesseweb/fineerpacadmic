@@ -34,13 +34,13 @@ class AcademicYearController extends Controller
     public function index()
     {
         $data['academicYears'] = $this->academicYearModel->getActiveAcademicYearsWithCollegesAndUniversities();
-        $this->loadCommonViews('academicyears/index', $data);
+        $this->loadCommonViews('Academicyears/index', $data);
     }
 
     public function create()
     {
         $data['universities'] = $this->universityModel->findAllActiveUniversities();
-        $this->loadCommonViews('academicyears/create', $data);
+        $this->loadCommonViews('Academicyears/create', $data);
     }
 
     public function store()
@@ -56,6 +56,7 @@ class AcademicYearController extends Controller
                 'start_date' => $this->request->getPost('start_date'),
                 'end_date' => $this->request->getPost('end_date'),
                 'status' => $this->request->getPost('status'),
+				'cast_cat' => $this->request->getPost('cast_cat'),
             ];
 
             // Insert academic year and get its ID
@@ -73,7 +74,7 @@ class AcademicYearController extends Controller
         }
 
         $data['universities'] = $this->universityModel->findAllActiveUniversities();
-        $this->loadCommonViews('academicyears/create', $data);
+        $this->loadCommonViews('Academicyears/create', $data);
     }
 
 public function edit($id)
@@ -122,7 +123,7 @@ public function edit($id)
     $data['selected_colleges'] = $selectedColleges;
     $data['all_colleges'] = $allColleges;
 
-    $this->loadCommonViews('academicyears/edit', $data);
+    $this->loadCommonViews('Academicyears/edit', $data);
 }
 
 
@@ -145,6 +146,7 @@ public function update($id)
             'start_date' => $this->request->getPost('start_date'),
             'end_date' => $this->request->getPost('end_date'),
             'status' => $this->request->getPost('status'),
+			'cast_cat' => $this->request->getPost('cast_cat'),
         ];
 
         $this->academicYearModel->updateAcademicYear($id, $academicYearData);
@@ -184,7 +186,7 @@ public function update($id)
     $data['selected_colleges'] = $selectedColleges;
     $data['all_colleges'] = $allColleges;
 
-    $this->loadCommonViews('academicyears/edit', $data);
+    $this->loadCommonViews('Academicyears/edit', $data);
 }
 
 
@@ -206,5 +208,19 @@ public function update($id)
     {
         $colleges = $this->collegeModel->getCollegesByUniversity($universityId);
         return $this->response->setJSON($colleges);
+    }
+	
+	
+	public function getcast()
+    {
+		if ($this->request->isAJAX()) {
+          $query = service('request')->getPost('acad');
+         $academicID= $this->request->getPost('acad');
+           
+		
+        $cast = $this->academicYearModel->getCastStatus($academicID);
+		
+         echo $cast['cast_cat']; die();
+		 }
     }
 }

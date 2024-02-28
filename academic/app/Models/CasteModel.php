@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class CasteModel extends Model
 {
-    protected $table = 'Caste';
+    protected $table = 'caste';
     protected $primaryKey = 'caste_id';
 
     protected $allowedFields = [
@@ -42,9 +42,9 @@ class CasteModel extends Model
     
     public function findAllActiveCastes()
     {
-        return $this->select('Caste.*, CasteCategory.caste_category_name')
-                ->join('CasteCategory', 'Caste.caste_category_id = CasteCategory.caste_category_id')
-            ->where('CasteCategory.status', 'active')
+        return $this->select('caste.*, castecategory.caste_category_name')
+                ->join('castecategory', 'caste.caste_category_id = castecategory.caste_category_id')
+            ->where('castecategory.status', 'active')
             ->findAll();
     }
 }

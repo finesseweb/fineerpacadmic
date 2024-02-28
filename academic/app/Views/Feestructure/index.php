@@ -26,7 +26,7 @@
                             <tr class="table-info">
                                 <th>Sl No</th>
                                 <th>Academic Year</th>
-								<th>Cast Category Name</th>
+								<!--<th>Cast Category Name</th>-->
 								<th>College Name</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -38,7 +38,7 @@
                                 <tr>
                                     <td><?= $slNo++ ?></td>
 									<td><?= $feestructure['academic_year_code']?></td>
-                                    <td><?= $feestructure['caste_category_name']?></td>
+                                   <!-- <td><?// $feestructure['caste_category_name']?></td>-->
 									 <td><?= $feestructure['college_name'] ?></td>
 									 <td><?= $feestructure['status'] ?></td>
                                     <td>

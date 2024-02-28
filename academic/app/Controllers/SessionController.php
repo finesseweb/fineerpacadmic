@@ -40,7 +40,7 @@ class SessionController extends BaseController
 		
 		echo view('templates/header');
 		echo view('templates/sidebar');
-		echo view('session/index',$data);
+		echo view('Session/index',$data);
 		echo view('templates/footer');
 		
 	}
@@ -96,7 +96,7 @@ class SessionController extends BaseController
 		$data['Years'] = $this->YearModel->findAllActiveYear();
 		echo view('templates/header');
 		echo view('templates/sidebar');
-		echo view('session/add',$data);
+		echo view('Session/add',$data);
 		echo view('templates/footer');
 		
 	}
@@ -142,7 +142,7 @@ class SessionController extends BaseController
         $data['session'] = $result;
 		echo view('templates/header');
 		echo view('templates/sidebar');
-		echo view('session/edit',$data);
+		echo view('Session/edit',$data);
 		echo view('templates/footer');
 		
 	}

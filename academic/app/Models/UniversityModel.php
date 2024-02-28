@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class UniversityModel extends Model
 {
-    protected $table = 'Universities'; // Your table name
+    protected $table = 'universities'; // Your table name
     protected $primaryKey = 'university_id'; // Your primary key field name
     protected $allowedFields = ['university_name', 'university_location', 'status']; // Fields that can be mass-assigned
 

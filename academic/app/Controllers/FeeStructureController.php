@@ -6,6 +6,8 @@ use App\Models\CasteCategoryModel;
 use App\Models\AcademicYearModel;
 use App\Models\CollegeModel;
 use App\Models\FeeStructureModel;
+use App\Models\FeesCategoryModel;
+use App\Models\FeesHeadModel;
 
 use CodeIgniter\Controller;
 
@@ -15,6 +17,8 @@ class FeeStructureController extends Controller
     private $collegeModel;
     private $academicyearModel;
 	private $feestructureModel;
+	private $feescategoryModel;
+    private $feesheadModel;
     private $session;
 
     public function __construct()
@@ -24,7 +28,8 @@ class FeeStructureController extends Controller
 		$this->collegeModel = new CollegeModel();
 		$this->academicyearModel = new AcademicYearModel();
 		$this->feestructureModel = new FeeStructureModel();
-        
+		$this->feescategoryModel = new FeesCategoryModel();
+        $this->feesheadModel = new FeesHeadModel();
 		
     }
 
@@ -51,6 +56,8 @@ class FeeStructureController extends Controller
 		$data['colleges'] = $this->collegeModel->findAllActiveColleges();
 		$data['academics'] = $this->academicyearModel->GetData();
 		$data['castcategorys'] = $this->castategoryModel->findAllActiveCategories();
+		$data['feescategorys'] = $this->feescategoryModel->findAllActivefeesCategory();
+		$data['feeheadmodel'] = $this->feesheadModel;
         $this->loadCommonViews('feestructure/create', $data);
     }
 

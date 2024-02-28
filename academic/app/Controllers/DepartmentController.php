@@ -34,14 +34,14 @@ class DepartmentController extends Controller
     {
         $data['department'] = $this->departmentModel->findAllActiveDepartments();
 		//print_r($data); die();
-        $this->loadCommonViews('department/index', $data);
+        $this->loadCommonViews('Department/index', $data);
     }
 
     public function create()
     {
         $data['colleges'] = $this->collegeModel->findAllActiveColleges();
 		$data['degrees'] = $this->degreeModel->GetData();
-        $this->loadCommonViews('department/create', $data);
+        $this->loadCommonViews('Department/create', $data);
     }
 
     public function store()
@@ -62,7 +62,7 @@ class DepartmentController extends Controller
         }
 
         $data['casteCategories'] = $this->casteCategoryModel->findAllActiveCategories();
-        $this->loadCommonViews('caste/create', $data);
+        $this->loadCommonViews('Department/create', $data);
     }
 
     public function edit($id)
@@ -75,7 +75,7 @@ class DepartmentController extends Controller
 
         $data['colleges'] = $this->collegeModel->findAllActiveColleges();
 		$data['degrees'] = $this->degreeModel->GetData();
-        $this->loadCommonViews('department/edit', $data);
+        $this->loadCommonViews('Department/edit', $data);
     }
 
     public function update($id)
@@ -103,7 +103,7 @@ class DepartmentController extends Controller
         $data['department'] = $department;
         $data['colleges'] = $this->collegeModel->findAllActiveColleges();
 		$data['degrees'] = $this->degreeModel->GetData();
-        $this->loadCommonViews('department/edit', $data);
+        $this->loadCommonViews('Department/edit', $data);
     }
 
     public function delete($id)

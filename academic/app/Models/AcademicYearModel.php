@@ -6,9 +6,9 @@ use CodeIgniter\Model;
 
 class AcademicYearModel extends Model
 {
-  protected $table = 'AcademicYears';
+  protected $table = 'academicyears';
     protected $primaryKey = 'academic_year_id';
-    protected $allowedFields = ['academic_year_code', 'start_date', 'end_date', 'status'];
+    protected $allowedFields = ['academic_year_code', 'start_date', 'end_date', 'status','cast_cat'];
 
    
  protected $validationRules = [
@@ -19,14 +19,14 @@ class AcademicYearModel extends Model
     ];
 public function getActiveAcademicYearsWithCollegesAndUniversities()
 {
-    return $this->select('AcademicYears.*, Colleges.college_name, Universities.university_name')
-        ->join('AcademicYearCollege', 'AcademicYears.academic_year_id = AcademicYearCollege.academic_year_id', 'left')
-        ->join('Colleges', 'AcademicYearCollege.college_id = Colleges.college_id', 'left')
-        ->join('Universities', 'Colleges.university_id = Universities.university_id', 'left')
+    return $this->select('academicyears.*, colleges.college_name, universities.university_name')
+        ->join('academicyearcollege', 'academicyears.academic_year_id = academicyearcollege.academic_year_id', 'left')
+        ->join('colleges', 'academicyearcollege.college_id = Colleges.college_id', 'left')
+        ->join('universities', 'colleges.university_id = universities.university_id', 'left')
        // ->where('AcademicYears.status', 'active')
-        ->where('Colleges.status', 'active')
-        ->where('Universities.status', 'active')
-        ->groupBy('AcademicYears.academic_year_id')
+        ->where('colleges.status', 'active')
+        ->where('universities.status', 'active')
+        ->groupBy('academicyears.academic_year_id')
         ->findAll();
 }
 
@@ -78,6 +78,15 @@ public function getActiveAcademicYearsWithCollegesAndUniversities()
         return $this->db->table('academicyears')
 		                   ->where('status','active')
                           ->get()->getResultArray();
+                          
+
+    }
+	public function getCastStatus($academicID)
+    {
+        return $this->db->table('academicyears')
+		                   ->where('status','active')
+						    ->where('academic_year_id',$academicID)
+                             ->get()->getRowArray();
                           
 
     }

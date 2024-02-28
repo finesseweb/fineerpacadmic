@@ -19,9 +19,9 @@
                     </div>
                 <?php endif; ?>
 
-                <form class="" action="auth/login" method="post">
+                <form class="" action="<?= base_url()?>auth/login" method="post">
                     <div class="form-group">
-                        <label for="email">Email Address</label>
+                        <label for="email">Username</label>
                         <input type="text" class="form-control" name="email" id="email" value="<?= set_value('email') ?>">
                         <?php if ($validation->getError('email')) { ?>
                             <div class='alert alert-danger mt-2'>

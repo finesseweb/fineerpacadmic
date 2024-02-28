@@ -43,7 +43,7 @@ $security_areas = array();
 
 $security_areas = array(//===[ACADEMIC SETUP]
     //masters
-   'SA_ACAD_DEGREE' => array(SS_ACAD_M | 1, ("Degree")),
+    'SA_ACAD_DEGREE' => array(SS_ACAD_M | 1, ("Degree")),
     'SA_ACAD_CASTE_CATEGORY' => array(SS_ACAD_M | 2, ("Caste Category")),
     'SA_ACAD_CASTE' => array(SS_ACAD_M | 3, ("Caste")),
     'SA_ACAD_UNIVERSITY' => array(SS_ACAD_M | 4, ("University")),

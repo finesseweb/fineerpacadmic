@@ -19,7 +19,7 @@ class FeesHeadModel extends Model
     ];
 
     protected $validationRules = [
-	    'fee_head_name.*' => 'required|min_length[3]|max_length[255]',
+	   
 		'fee_category_id' => 'required|integer',
 		'college_id' => 'required|integer',
 		'status' => 'required|in_list[active,inactive]',
@@ -27,12 +27,7 @@ class FeesHeadModel extends Model
   ];
 
     protected $validationMessages = [
-        'fee_head_name' => [
-            'required' => 'The Head name field is required.',
-            'min_length' => 'The Head name should be at least {param} characters long.',
-            'max_length' => 'The Head name should not exceed {param} characters.',
-        ],
-		
+        
         'fee_category_id' => [
             'required' => 'The Category name field is required.',
             'integer' => 'The Category name field must be an integer.',
@@ -57,5 +52,15 @@ class FeesHeadModel extends Model
 			  ->join('colleges', 'feeheads.college_id = colleges.college_id')
             ->where('feeheads.status', 'active')
             ->findAll();
+    }
+	
+	public function gethead($catID)
+    {
+        return $this->db->table('feeheads')
+		                   ->where('status','active')
+						    ->where('fee_category_id',$catID)
+                             ->get()->getResultArray();
+                          
+
     }
 }

@@ -170,7 +170,7 @@ $routes->get('/academicyears/edit/(:num)', 'AcademicYearController::edit/$1');
 $routes->post('/academicyears/update/(:num)', 'AcademicYearController::update/$1');
 $routes->get('/academicyears/delete/(:num)', 'AcademicYearController::delete/$1');
 $routes->get('academicyear/getCollegesByUniversity/(:num)', 'AcademicYearController::getCollegesByUniversity/$1');
-
+$routes->match(['get', 'post'], 'academicyear/getcast', 'AcademicYearController::getcast'); // Year
 
 
 

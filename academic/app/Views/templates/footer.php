@@ -29,7 +29,7 @@
     <!-- Custom js for this page -->
     <script src="<?= base_url()?>public/assets/js/dashboard.js"></script>
     <script src="<?= base_url()?>public/assets/js/todolist.js"></script>
-	<script src="<?= base_url()?>https://code.jquery.com/jquery-3.7.0.js"></script>
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 	 <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
@@ -64,6 +64,27 @@ $("#customFields").append('<div class="row" id="customFields1"><div class="col-m
         $(this).parent().parent().parent().remove();
     });
 });
+
+$(document).ready(function(){
+
+$("#academic_year_id").change(function(){
+	var acad = $(this).val();
+	 $.ajax({
+      type: "POST",
+      url: "<?= base_url()?>academicyear/getcast",
+      data: { acad: acad},
+      success: function (result) {
+          if(result==='no'){
+			$('#caste_category_id').prop('disabled', 'disabled');
+      }
+	  else {
+		 $('#caste_category_id').prop('disabled', false);
+	  }
+	  }
+ });
+
+})	
+})	
 	</script>
     <!-- End custom js for this page -->
   </body>

@@ -55,19 +55,27 @@ class FeesHeadController extends Controller
 //print_r($validationRules); die();
 ///print_r($_POST); die();
         
-        if ($this->request->getMethod() === 'post' && $this->validate($validationRules)) {
+        if ($this->request->getMethod() === 'post') {
 			
 			for ($i=0;$i<count($this->request->getPost('fee_head_name'));$i++) {
 				$heads=$this->request->getPost('fee_head_name'); 
-           // print_r($heads[$i]); die();
-            $feehaedModel->save([
-                'fee_head_name' => $heads[$i],
-				'college_id' => $this->request->getPost('college_id'),
-				'fee_category_id' => $this->request->getPost('fee_category_id'),
-                'status' => $this->request->getPost('status'),
-            ]);
-            }
-            return redirect()->to('/feeshead')->with('success', 'Head added successfully');
+           
+		   
+		     $data= [
+			    'fee_head_name' =>$heads[$i],
+				'fee_category_id'=>$this->request->getPost('fee_category_id'),
+				'status'=>$this->request->getPost('status'),
+				'college_id'=>$this->request->getPost('college_id')
+              ];
+			 
+			 //print_r($data); die();
+			 
+             $insert= $this->feehaedModel->insert($data);
+			 
+			 
+			 
+           }
+            return redirect()->to('/feeshead')->with('success', 'Head added successfully'); 
         }
           
        
