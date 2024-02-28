@@ -449,7 +449,7 @@ $security_areas =array(
     //-----------------ACADEMIC--------------------------------------------//    Startts
     
     //masters
-          'SA_ACAD_DEGREE' => array(SS_ACAD_M | 1, ("Degree")),
+    'SA_ACAD_DEGREE' => array(SS_ACAD_M | 1, ("Degree")),
     'SA_ACAD_CASTE_CATEGORY' => array(SS_ACAD_M | 2, ("Caste Category")),
     'SA_ACAD_CASTE' => array(SS_ACAD_M | 3, ("Caste")),
     'SA_ACAD_UNIVERSITY' => array(SS_ACAD_M | 4, ("University")),
@@ -457,6 +457,10 @@ $security_areas =array(
     'SA_ACAD_ACADEMIC_YEAR' => array(SS_ACAD_M | 6, ("Academic Year")),
     'SA_ACAD_DEPARTMENT' => array(SS_ACAD_M | 7, ("Department")),
     'SA_ACAD_PAPER' => array(SS_ACAD_M | 8, ("Paper")),
+    'SA_ACAD_PROFESSOR' => array(SS_ACAD_M | 9, ("Professor")),
+    'SA_ACAD_FEE_CATEGORY' => array(SS_ACAD_M | 10, ("Fee Category")),
+    'SA_ACAD_FEE_HEADS' => array(SS_ACAD_M | 11, ("Fee Heads")),
+    'SA_ACAD_FEE_STRUCTURE' => array(SS_ACAD_M | 12, ("Fee Structure")),
    
     
   

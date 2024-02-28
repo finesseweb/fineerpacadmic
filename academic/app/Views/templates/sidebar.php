@@ -58,20 +58,28 @@
                  <?php if(in_array(SA_ACAD_COLLEGE,$roleValue)) { ?>
                 <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>college">College </a></li>
                  <?php } ?>
-			    <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>year"> Year </a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>session"> Session </a></li>
+<!--			    <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>year"> Year </a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>session"> Session </a></li>-->
                    <?php if(in_array(SA_ACAD_DEPARTMENT,$roleValue)) { ?>
                 <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>department"> Department </a></li>
                   <?php } ?>
-                <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>courses"> Course </a></li>
+                <!--<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>courses"> Course </a></li>-->
                  <?php if(in_array(SA_ACAD_PAPER,$roleValue)) { ?>
 				<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>papers"> Papers </a></li>
                                   <?php } ?>
+                          
+                            <?php if(in_array(SA_ACAD_PROFESSOR,$roleValue)) { ?>
 				<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>professor"> Professor </a></li>
-
+                                <?php } ?>
+                                <?php if(in_array(SA_ACAD_FEE_CATEGORY,$roleValue)) { ?>
 				<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>feescategory"> Fee Category </a></li>
+                                <?php } ?>
+                                 <?php if(in_array(SA_ACAD_FEE_HEADS,$roleValue)) { ?>
 				<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>feeshead"> Fee Head </a></li>
+                                <?php } ?>
+                                 <?php if(in_array(SA_ACAD_FEE_STRUCTURE,$roleValue)) { ?>
 				<li class="nav-item"> <a class="nav-link" href="<?= base_url()?>feestructure"> Fee Structure </a></li>
+                                <?php } ?>
                 </ul>
               </div>
             </li>

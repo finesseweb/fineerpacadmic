@@ -51,8 +51,10 @@ $security_areas = array(//===[ACADEMIC SETUP]
     'SA_ACAD_ACADEMIC_YEAR' => array(SS_ACAD_M | 6, ("Academic Year")),
     'SA_ACAD_DEPARTMENT' => array(SS_ACAD_M | 7, ("Department")),
     'SA_ACAD_PAPER' => array(SS_ACAD_M | 8, ("Paper")),
-    
-    
+    'SA_ACAD_PROFESSOR' => array(SS_ACAD_M | 9, ("Professor")),
+    'SA_ACAD_FEE_CATEGORY' => array(SS_ACAD_M | 10, ("Fee Category")),
+    'SA_ACAD_FEE_HEADS' => array(SS_ACAD_M | 11, ("Fee Heads")),
+    'SA_ACAD_FEE_STRUCTURE' => array(SS_ACAD_M | 12, ("Fee Structure")),
         //-----------------------------Academic Access ----------// Acadmic Ends
 );
 
