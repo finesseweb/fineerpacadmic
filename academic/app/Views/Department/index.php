@@ -42,7 +42,7 @@
                                     <td><?= $dept['college_name'] ?></td>
 									 <td><?= $dept['status'] ?></td>
                                     <td>
-                                        <a class="btn btn-gradient-dark btn-icon-text" href="/department/edit/<?= $dept['department_id'] ?>">
+                                        <a class="btn btn-gradient-dark btn-icon-text" href="<?= base_url()?>department/edit/<?= $dept['department_id'] ?>">
                                             <i class="mdi mdi-file-check btn-icon-append">Edit</i>
                                         </a>
                                         <!-- Other table data -->
