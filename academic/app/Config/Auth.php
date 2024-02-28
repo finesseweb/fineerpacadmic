@@ -60,8 +60,8 @@ class Auth extends BaseConfig
 
     public $assignRedirect = [
         '1' => '/superadmin',
-        '2' => '/dashboard',
-        '3' => '/customerportal',
+        '2' => '/superadmin',
+        '3' => '/superadmin',
         '9' => '/superadmin',
     ];
 
