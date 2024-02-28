@@ -183,11 +183,11 @@ $routes->get('academicyear/getCollegesByUniversity/(:num)', 'AcademicYearControl
  * --------------------------------------------------------------------
  */
 
-$routes->group('', ['filter' => 'auth:Role,2'], function ($routes){
-
-	$routes->get('dashboard', 'Dashboard::index'); // ADMIN DASHBOARD
-	$routes->match(['get', 'post'], 'dashboard/profile', 'Auth::profile');
-});
+//$routes->group('', ['filter' => 'auth:Role,2'], function ($routes){
+//
+//	$routes->get('dashboard', 'Dashboard::index'); // ADMIN DASHBOARD
+//	$routes->match(['get', 'post'], 'dashboard/profile', 'Auth::profile');
+//});
 
 /**
  * --------------------------------------------------------------------
