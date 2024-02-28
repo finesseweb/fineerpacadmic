@@ -522,6 +522,7 @@ class AuthLibrary
             'lastname' => "FROM ERP",//Due to it is now connected to the erp
             'email' => $user['email'],
             'role' => $user['role_id'],
+			'name' => $user['real_name'],
             'isLoggedIn' => true,
             'ipaddress' => $this->request->getIPAddress(),
         ];
