@@ -461,7 +461,7 @@ $security_areas =array(
     'SA_ACAD_FEE_CATEGORY' => array(SS_ACAD_M | 10, ("Fee Category")),
     'SA_ACAD_FEE_HEADS' => array(SS_ACAD_M | 11, ("Fee Heads")),
     'SA_ACAD_FEE_STRUCTURE' => array(SS_ACAD_M | 12, ("Fee Structure")),
-   
+    'SA_ACAD_COURSE' => array(SS_ACAD_M | 13, ("Course")),
     
   
     //-----------------------------Academic Access ----------// Acadmic Ends

@@ -51,7 +51,7 @@ class FeeStructureController extends Controller
         $data['feestructures'] = $this->feestructureModel->findAllActivefeeshead();
 		
 		//print_r($data); die();
-        $this->loadCommonViews('feestructure/index', $data);
+        $this->loadCommonViews('Feestructure/index', $data);
     }
 
     public function create()
