@@ -243,5 +243,37 @@ class Auth extends BaseConfig
      */
     public $resetEmailSubject = 'Reset Your Password';
     
+      public function __construct()
+    {
+        // Get CodeIgniter database connection named 'second_db'
+        $db = \Config\Database::connect('second_db');
+
+        // Fetch role_id values from fa_security_roles table
+        $query = $db->table('fa_security_roles')->select('id, role')->get();
+        
+        // Initialize empty arrays for assignRoles and assignRedirect
+        $this->assignRoles = [];
+        $this->assignRedirect = [];
+
+        // Loop through fetched results and assign them
+        foreach ($query->getResult() as $row) {
+            $role_id = $row->id;
+            $role_name = $row->role;
+            
+            // Assign role_id to assignRoles array with role name as value
+            $this->assignRoles[$role_id] = $role_name;
+            
+            // Assign redirection paths to assignRedirect array based on role_id
+            switch ($role_id) {
+                case 1:
+                    $this->assignRedirect[$role_id] = '/superadmin';
+                    break;
+              
+                default:
+                    // You can define default redirection paths for other role_ids
+                    $this->assignRedirect[$role_id] = '/superadmin';
+            }
+        }
+    }
 
 }
