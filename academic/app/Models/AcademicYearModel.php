@@ -21,7 +21,7 @@ public function getActiveAcademicYearsWithCollegesAndUniversities()
 {
     return $this->select('academicyears.*, colleges.college_name, universities.university_name')
         ->join('academicyearcollege', 'academicyears.academic_year_id = academicyearcollege.academic_year_id', 'left')
-        ->join('colleges', 'academicyearcollege.college_id = Colleges.college_id', 'left')
+        ->join('colleges', 'academicyearcollege.college_id = colleges.college_id', 'left')
         ->join('universities', 'colleges.university_id = universities.university_id', 'left')
        // ->where('AcademicYears.status', 'active')
         ->where('colleges.status', 'active')

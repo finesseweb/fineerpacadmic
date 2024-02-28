@@ -86,7 +86,7 @@
 							foreach($heads as $head):
 							?>
 							<tr>
-							<td><input type="hidden" ></td><td><?=$head['fee_head_name']?></td><td><input type="text" name="amount[]"></td></tr></td>
+							<td><input type="hidden" name="fee_head_id[]" value="<?=$head['fee_head_id']?>" ></td><td><?=$head['fee_head_name']?></td><td><input type="text" name="amount[]"></td></tr></td>
 							</tr><?php endforeach;?>
 							<?php $i++ ;endforeach;?>
 							</tbody>

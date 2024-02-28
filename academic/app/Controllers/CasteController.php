@@ -31,13 +31,13 @@ class CasteController extends Controller
     public function index()
     {
         $data['castes'] = $this->casteModel->findAllActiveCastes();
-        $this->loadCommonViews('caste/index', $data);
+        $this->loadCommonViews('Caste/index', $data);
     }
 
     public function create()
     {
         $data['casteCategories'] = $this->casteCategoryModel->findAllActiveCategories();
-        $this->loadCommonViews('caste/create', $data);
+        $this->loadCommonViews('Caste/create', $data);
     }
 
     public function store()
@@ -57,7 +57,7 @@ class CasteController extends Controller
         }
 
         $data['casteCategories'] = $this->casteCategoryModel->findAllActiveCategories();
-        $this->loadCommonViews('caste/create', $data);
+        $this->loadCommonViews('Caste/create', $data);
     }
 
     public function edit($id)
@@ -69,7 +69,7 @@ class CasteController extends Controller
         }
 
         $data['casteCategories'] = $this->casteCategoryModel->findAllActiveCategories();
-        $this->loadCommonViews('caste/edit', $data);
+        $this->loadCommonViews('Caste/edit', $data);
     }
 
     public function update($id)
@@ -95,7 +95,7 @@ class CasteController extends Controller
 
         $data['caste'] = $caste;
         $data['casteCategories'] = $this->casteCategoryModel->findAllActiveCategories();
-        $this->loadCommonViews('caste/edit', $data);
+        $this->loadCommonViews('Caste/edit', $data);
     }
 
     public function delete($id)

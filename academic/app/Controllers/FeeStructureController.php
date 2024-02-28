@@ -8,6 +8,8 @@ use App\Models\CollegeModel;
 use App\Models\FeeStructureModel;
 use App\Models\FeesCategoryModel;
 use App\Models\FeesHeadModel;
+use App\Models\FeeStructureDetailsModel;
+
 
 use CodeIgniter\Controller;
 
@@ -19,6 +21,7 @@ class FeeStructureController extends Controller
 	private $feestructureModel;
 	private $feescategoryModel;
     private $feesheadModel;
+	private $feestructuredetailsModel;
     private $session;
 
     public function __construct()
@@ -30,6 +33,7 @@ class FeeStructureController extends Controller
 		$this->feestructureModel = new FeeStructureModel();
 		$this->feescategoryModel = new FeesCategoryModel();
         $this->feesheadModel = new FeesHeadModel();
+		$this->feestructuredetailsModel = new FeeStructureDetailsModel();
 		
     }
 
@@ -58,14 +62,15 @@ class FeeStructureController extends Controller
 		$data['castcategorys'] = $this->castategoryModel->findAllActiveCategories();
 		$data['feescategorys'] = $this->feescategoryModel->findAllActivefeesCategory();
 		$data['feeheadmodel'] = $this->feesheadModel;
-        $this->loadCommonViews('feestructure/create', $data);
+        $this->loadCommonViews('Feestructure/create', $data);
     }
 
     public function store()
     {
         $feestructureModel = $this->feestructureModel;
+		$feestructuredetailsModel = $this->feestructuredetailsModel;
         $validationRules = $feestructureModel->getValidationRules();
-//print_r($validationRules); die();
+      
 
         
         if ($this->request->getMethod() === 'post' && $this->validate($validationRules)) {
@@ -78,6 +83,23 @@ class FeeStructureController extends Controller
 				'college_id' => $this->request->getPost('college_id'),
                 'status' => $this->request->getPost('status'),
             ]);
+			
+			for($i=0;$i<count($this->request->getPost('amount'));$i++) {
+				$heads=$this->request->getPost('fee_head_id'); 
+				$amt=$this->request->getPost('amount'); 
+				
+				$data= [
+			    'fee_structure_id' =>$feestructureModel->getInsertID(),
+				'amount'=>$amt[$i],
+				'fee_head_id'=>$heads[$i],
+				'status'=>$this->request->getPost('status'),
+				'college_id'=>$this->request->getPost('college_id'),
+				'caste_category_id' => $this->request->getPost('caste_category_id'),
+              ];
+				  //print_r($data); die();
+				$insert= $feestructuredetailsModel->insert($data);
+			}
+			
 
             return redirect()->to('/feestructure')->with('success', 'Fee Structure added successfully');
         }
@@ -86,7 +108,7 @@ class FeeStructureController extends Controller
 		$data['colleges'] = $this->collegeModel->findAllActiveColleges();
 		$data['academics'] = $this->academicyearModel->GetData();
 		$data['castcategorys'] = $this->castategoryModel->findAllActiveCategories();
-		 $this->loadCommonViews('feestructure/create', $data);
+		 $this->loadCommonViews('Feestructure/create', $data);
     }
 
     public function edit($id)
@@ -100,7 +122,7 @@ class FeeStructureController extends Controller
         $data['colleges'] = $this->collegeModel->findAllActiveColleges();
 		$data['academics'] = $this->academicyearModel->GetData();
 		$data['castcategorys'] = $this->castategoryModel->findAllActiveCategories();
-        $this->loadCommonViews('feestructure/edit', $data);
+        $this->loadCommonViews('Feestructure/edit', $data);
     }
 
     public function update($id)
@@ -130,7 +152,7 @@ class FeeStructureController extends Controller
 		  $data['colleges'] = $this->collegeModel->findAllActiveColleges();
 		$data['academics'] = $this->academicyearModel->GetData();
 		$data['castcategorys'] = $this->castategoryModel->findAllActiveCategories();
-        $this->loadCommonViews('feeshead/edit', $data);
+        $this->loadCommonViews('Feestructure/edit', $data);
     }
 
     public function delete($id)
@@ -138,10 +160,10 @@ class FeeStructureController extends Controller
         $course = $this->courseModel->find($id);
 
         if (!$course) {
-            return redirect()->to('/feeshead')->with('error', 'Course not found');
+            return redirect()->to('/feestructure')->with('error', 'Course not found');
         }
 
         $this->courseModel->delete($id);
-        return redirect()->to('/feeshead')->with('success', 'Course deleted successfully');
+        return redirect()->to('/feestructure')->with('success', 'Course deleted successfully');
     }
 }
