@@ -57,17 +57,17 @@ public function getActiveAcademicYearsWithCollegesAndUniversities()
                 'college_id' => $collegeId,
             ];
         }
-        $this->db->table('AcademicYearCollege')->insertBatch($data);
+        $this->db->table('academicyearcollege')->insertBatch($data);
     }
 
     public function deleteCollegesForAcademicYear($academicYearId)
     {
-        $this->db->table('AcademicYearCollege')->where('academic_year_id', $academicYearId)->delete();
+        $this->db->table('academicyearcollege')->where('academic_year_id', $academicYearId)->delete();
     }
 
     public function getCollegeIdsForAcademicYear($academicYearId)
     {
-        return $this->db->table('AcademicYearCollege')
+        return $this->db->table('academicyearcollege')
             ->where('academic_year_id', $academicYearId)
             ->get()->getResultArray();
     }
