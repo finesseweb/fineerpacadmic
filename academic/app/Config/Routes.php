@@ -151,6 +151,14 @@ $routes->post('feestructure/store', 'FeeStructureController::store');
 $routes->get('feestructure/edit/(:num)', 'FeeStructureController::edit/$1');
 $routes->post('feestructure/update/(:num)', 'FeeStructureController::update/$1');
 $routes->get('feestructure/delete/(:num)', 'FeeStructureController::delete/$1');
+
+
+$routes->get('semester', 'SemesterController::index');
+$routes->get('semester/create', 'SemesterController::create');
+$routes->post('semester/store', 'SemesterController::store');
+$routes->get('semester/edit/(:num)', 'SemesterController::edit/$1');
+$routes->post('semester/update/(:num)', 'SemesterController::update/$1');
+$routes->get('semester/delete/(:num)', 'SemesterController::delete/$1');
 //session raushan
 
 $routes->get('session', 'SessionController::index'); // Session

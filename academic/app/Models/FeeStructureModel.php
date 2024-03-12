@@ -13,7 +13,9 @@ class FeeStructureModel extends Model
         'academic_year_id',
 		'caste_category_id',
 		'status',
-		'college_id'
+		'college_id',
+		'total_grand_value1',
+		'course_id'
        
 		
     ];
@@ -46,13 +48,14 @@ class FeeStructureModel extends Model
     protected $skipValidation = false;
     
     
-    public function findAllActivefeeshead()
+    public function findAllActivefeesstructure()
     {
         return $this->select('feestructures.*,academicyears.academic_year_code,colleges.college_name')
              ->join('academicyears', 'feestructures.academic_year_id = academicyears.academic_year_id')
 			// ->join('castecategory', 'feestructures.caste_category_id = castecategory.caste_category_id')
 			 ->join('colleges', 'feestructures.college_id = colleges.college_id')
             ->where('feestructures.status', 'active')
+			//->groupBy('academic_year_id')
             ->findAll();
     }
 }

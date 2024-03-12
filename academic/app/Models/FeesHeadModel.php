@@ -63,4 +63,12 @@ class FeesHeadModel extends Model
                           
 
     }
+	public function getAllheads()
+    {
+        return $this->db->table('feeheads')
+		                   ->where('status','active')
+						    ->get()->getResultArray();
+                          
+
+    }
 }

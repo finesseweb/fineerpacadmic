@@ -54,6 +54,9 @@
                <?php if(in_array(SA_ACAD_ACADEMIC_YEAR,$roleValue)) { ?>
                 <li class="nav-item" > <a class="nav-link" href="<?= base_url()?>academicyears"> Academic Year </a></li>
                <?php }?>
+			   <?php if(in_array(SA_ACAD_ACADEMIC_YEAR,$roleValue)) { ?>
+                <li class="nav-item" > <a class="nav-link" href="<?= base_url()?>semester"> Semester </a></li>
+               <?php }?>
                 <?php if(in_array(SA_ACAD_CASTE_CATEGORY,$roleValue)) { ?>
                 <li class="nav-item"> <a class="nav-link" href="<?= base_url()?>castecategory">Caste Category </a></li>
                 <?php }?>

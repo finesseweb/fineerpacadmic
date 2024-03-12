@@ -4,44 +4,38 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class FeeStructureDetailsModel extends Model
+class FeeStructureItemModel extends Model
 {
-    protected $table = 'feestructuredetails';
-    protected $primaryKey = 'fee_structure_detail_id';
+    protected $table = 'feestructure_item_details';
+    protected $primaryKey = 'id';
 
     protected $allowedFields = [
-        'fee_structure_id',
-		'fee_head_id',
-		'amount',
-		'status',
-		'college_id',
-		'caste_category_id'
+        'stucture_id',
+		//'grand_term1_result',
+		//'grand_term2_result',
+		//'grand_term3_result',
+		///'grand_term4_result',
+		//'grand_term5_result',
+		//'grand_term6_result',
+		//'grand_term7_result',
+		//'grand_term8_result',
+		'total_grand_value'
        
 		
     ];
 
     protected $validationRules = [
-	    'fee_structure_id' => 'required|integer',
-		'college_id' => 'required|integer',
-		'status' => 'required|in_list[active,inactive]',
+	    'stucture_id' => 'required|integer',
+		
 		
   ];
 
     protected $validationMessages = [
-        'fee_structure_id' => [
+        'stucture_id' => [
            'required' => 'The Category name field is required.',
            'integer' => 'The Category name field must be an integer.',
         ],
 		
-        
-        'college_id' => [
-            'required' => 'The College name field is required.',
-            'integer' => 'The College name field must be an integer.',
-        ],		
-        'status' => [
-            'required' => 'The status field is required.',
-            'in_list' => 'The status field should be either active or inactive.',
-        ],
     ];
 
     protected $skipValidation = false;
