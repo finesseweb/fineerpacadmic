@@ -83,8 +83,110 @@ $("#academic_year_id").change(function(){
 	  }
  });
 
-})	
-})	
+});
+
+
+});
+
+$(function() {
+    $('.feesamt').on("blur", function(){
+        
+        var cost = 0;
+        $(".feesamt").each(function() {
+            var value = $(this).val();
+            if (!isNaN(value) && value != "")
+                cost+= parseFloat(value);
+        })
+        $('.cost').val(cost);
+    });
+});	
+
+$('.showdetails').hide();
+$('#showbtndetails').hide();	
+
+$('#showhidedetails').on("click", function(){
+$('.showdetails').show();
+$('#showbtndetails').show();
+$('#showhidedetails').hide();	
+});
+
+$('#showbtndetails').on("click", function(){
+$('.showdetails').hide();
+$('#showhidedetails').show();
+$('#showbtndetails').hide();
+	
+});
+
+
+   function select_term_fees(val, num, i, category_id, termno) {
+	  // alert('hii');
+        var len = $('input[name^="term_id"]').length;
+
+        var total_term_amt = 0;
+        var total_term1_amt1 = 0;
+        var amt = 0;
+        var cat_row_amt = 0;
+        var inc = 0;
+        var grand = 0;
+        $('[id^="term' + num +'"]').each(function (e) {
+			//alert('hii');
+			var val = $(this).val();
+            if (val) {
+                amt += parseFloat(val);
+
+            }
+          });
+        var amount = amt;
+
+        $('input.term' + termno + category_id).each(function () {
+            var value = parseFloat($(this).val());
+            //alert(value);
+            if (!isNaN(value)) {
+                total_term_amt += value;
+                //alert(total_term_amt);
+            }
+        });
+
+
+        $('#feeheads_total' + num).html(amount);
+        $('#feeheads_total_val' + num + '').val(amount);
+        $('#term' + termno + '_total_' + category_id + '_' + i + '').html(total_term_amt);
+        $('#catresult' + termno + category_id + '').val(total_term_amt);
+
+        for (inc = 1; inc <= len; inc++) {
+            cat_row_amt += !$('#catresult' + inc + '' + category_id).val() ? 0 : parseFloat($('#catresult' + inc + '' + category_id).val());
+        }
+
+	//cat_row_amt += total_term_amt;
+
+        var cat = $('#cat_row_total' + category_id + '_' + i + '').val();
+
+        $('#cat_total' + category_id + '_' + i + '').html(cat_row_amt);
+       $('#cat_row_total' + category_id + '_' + i + '').val(cat_row_amt);
+
+
+
+        $('span.term' + termno).each(function () {
+           var value1 = parseFloat($(this).text());
+            //alert(value1);
+            if (!isNaN(value1)) {
+                total_term1_amt1 += value1;
+              //  alert(total_term1_amt1);
+            }
+       });
+
+        for (inc = 1; inc <= len; inc++) {
+            if (inc != termno) {
+                grand += !$('#grand_result' + inc).val() ? 0 : parseFloat($('#grand_result' + inc).val());
+            }
+        }
+        grand += total_term1_amt1;
+        $('#term' + termno + '_grandtotal_').html(total_term1_amt1);
+        $('#grand_result' + termno).val(total_term1_amt1);
+        $('#grand_total').html(grand);
+        $('#grandtotal_total').val(grand);
+    }
+
 	</script>
     <!-- End custom js for this page -->
   </body>

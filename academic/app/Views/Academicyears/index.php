@@ -29,7 +29,8 @@
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>College</th>
-                                <th>University</th> <!-- Add this column -->
+                                <th>University</th>
+                                <th>Cast Category</th>								<!-- Add this column -->
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -43,7 +44,8 @@
                                     <td><?= $academicYear['start_date'] ?></td>
                                     <td><?= $academicYear['end_date'] ?></td>
                                     <td><?= $academicYear['college_name'] ?></td>
-                                    <td><?= $academicYear['university_name'] ?></td> <!-- Display university name -->
+                                    <td><?= $academicYear['university_name'] ?></td>
+                                    <td><?= ucfirst($academicYear['cast_cat']) ?></td>									<!-- Display university name -->
                                     <td><?= $academicYear['status'] ?></td>
                                     <td>
                                         <a class="btn btn-gradient-dark btn-icon-text" href="<?= base_url()?>academicyears/edit/<?= $academicYear['academic_year_id'] ?>">

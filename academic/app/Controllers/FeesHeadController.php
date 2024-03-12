@@ -37,7 +37,7 @@ class FeesHeadController extends Controller
     {
         $data['fees'] = $this->feehaedModel->findAllActivefeeshead();
 		//print_r($data); die();
-        $this->loadCommonViews('feeshead/index', $data);
+        $this->loadCommonViews('Feeshead/index', $data);
     }
 
     public function create()

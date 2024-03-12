@@ -61,7 +61,7 @@
 						</div>
 						<div class="col-md-6">
                         <div class="form-group">
-                            <label for="Cast">Cast Category implementation</label>
+                            <label for="Cast">Cast Category Implementation</label>
                             <select name="cast_cat" id="cast_cat" class="form-control" required>
                                 <option value="no">No</option>
                                 <option value="yes">Yes</option>

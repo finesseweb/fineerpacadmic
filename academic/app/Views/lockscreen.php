@@ -20,7 +20,7 @@
                     </div>
                 <?php endif; ?>
 
-                <form class="" action="/auth/login" method="post">
+                <form class="" action="<?= base_url()?>auth/login" method="post">
 
                     <input type="hidden" class="form-control" name="email" id="email" value="<?= session()->get('email') ?>">
                     <input type="hidden" class="form-control" name="rememberme" id="rememberme" value="<?= session()->get('rememberme') ?>">

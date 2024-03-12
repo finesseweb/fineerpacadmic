@@ -44,6 +44,19 @@
 					 <div class="row">
 					  <div class="col-md-6">
                             <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Course</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" name="course_id" required>
+									<option value="">Select</option>
+                                        <?php foreach ($courses as $course): ?>
+                                            <option value="<?= $course['course_id'] ?>"><?= $course['course_name'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">College</label>
                                 <div class="col-sm-9">
                                     <select class="form-control" name="college_id" required>
@@ -55,7 +68,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                    </div>
+					<div class="row">
+					  <div class="col-md-6">
                             <div class="form-group row">
                                 <label class="col-sm-3 col-form-label">Status</label>
                                 <div class="col-sm-9">
@@ -81,14 +96,15 @@
 							<?php $i=1; foreach($feescategorys as $feescategory) :?>
 							<tr>
 							<td><?=$i?></td>
-							<td><?=$feescategory['fee_category_name']?>
+							<td><input type="hidden" name="fee_category_id[]" value="<?=$feescategory['fee_category_id']?>" ><?=$feescategory['fee_category_name']?>
 							<?php $heads= $feeheadmodel->gethead($feescategory['fee_category_id']);
 							foreach($heads as $head):
 							?>
 							<tr>
-							<td><input type="hidden" ></td><td><?=$head['fee_head_name']?></td><td><input type="text" name="amount[]"></td></tr></td>
+							<td><input type="hidden" name="fee_head_id[]" value="<?=$head['fee_head_id']?>" ></td><td><?=$head['fee_head_name']?></td><td><input type="text" name="amount[]" class="feesamt"></td></tr></td>
 							</tr><?php endforeach;?>
 							<?php $i++ ;endforeach;?>
+							<tr><td colspan="2"> Total Amount</td><td><input type="text" name="total_grand_value1" value="" class="cost" readonly></td></tr>
 							</tbody>
                         </thead>
 					 </table>

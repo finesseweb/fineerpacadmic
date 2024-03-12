@@ -8,10 +8,10 @@
     <?php endif; ?>
 
     <div class="page-header">
-        <h3 class="page-title"> Department </h3>
+        <h3 class="page-title"> Fee Category </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= base_url()?>department/create" class="btn btn-gradient-primary btn-fw">Add</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url()?>semester/create" class="btn btn-gradient-primary btn-fw">Add</a></li>
             </ol>
         </nav>
     </div>
@@ -20,13 +20,15 @@
         <div class="col-lg-12 stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Department List</h4>
+                    <h4 class="card-title">Category List</h4>
                     <table class="table table-striped table-bordered" id="example">
                         <thead>
                             <tr class="table-info">
                                 <th>Sl No</th>
-                                <th>Department Name</th>
-                                <th>Degree Name</th>
+                                <th>Name</th>
+								<th>Academic Year</th>
+								<th>Start Date</th>
+								<th>End Date</th>
 								<th>College Name</th>
                                 <th>Status</th>
                                 <th>Actions</th>
@@ -34,15 +36,17 @@
                         </thead>
                         <tbody>
                             <?php $slNo = 1; ?>
-                            <?php foreach ($department as $dept): ?>
+                            <?php foreach ($semesters as $semester): ?>
                                 <tr>
                                     <td><?= $slNo++ ?></td>
-                                    <td><?= $dept['department_name'] ?></td>
-									<td><?= strtoupper($dept['name']) ?></td>
-                                    <td><?= $dept['college_name'] ?></td>
-									 <td><?= $dept['status'] ?></td>
+                                    <td><?= $semester['semester_name']?></td>
+									<td><?= $semester['academic_year_code']?></td>
+									<td><?= date('d-m-Y',strtotime($semester['start_date']))?></td>
+									<td><?= date('d-m-Y',strtotime($semester['end_date']))?></td>
+									 <td><?= $semester['college_name'] ?></td>
+									 <td><?= $semester['status'] ?></td>
                                     <td>
-                                        <a class="btn btn-gradient-dark btn-icon-text" href="<?= base_url()?>department/edit/<?= $dept['department_id'] ?>">
+                                        <a class="btn btn-gradient-dark btn-icon-text" href="<?= base_url()?>semester/edit/<?= $semester['semester_id'] ?>">
                                             <i class="mdi mdi-file-check btn-icon-append">Edit</i>
                                         </a>
                                         <!-- Other table data -->

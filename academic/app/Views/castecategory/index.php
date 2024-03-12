@@ -38,7 +38,7 @@
                                     <td><?= $castCategory['caste_category_name'] ?></td>
                                     <td><?= $castCategory['status'] ?></td>
                                     <td>
-                                        <a class="btn btn-gradient-dark btn-icon-text" href="/castecategory/edit/<?= $castCategory['caste_category_id'] ?>">
+                                        <a class="btn btn-gradient-dark btn-icon-text" href="<?= base_url()?>castecategory/edit/<?= $castCategory['caste_category_id'] ?>">
                                             <i class="mdi mdi-file-check btn-icon-append"></i>Edit
                                         </a>
                                         <!-- Other table data -->

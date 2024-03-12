@@ -21,7 +21,7 @@ public function getActiveAcademicYearsWithCollegesAndUniversities()
 {
     return $this->select('academicyears.*, colleges.college_name, universities.university_name')
         ->join('academicyearcollege', 'academicyears.academic_year_id = academicyearcollege.academic_year_id', 'left')
-        ->join('colleges', 'academicyearcollege.college_id = Colleges.college_id', 'left')
+        ->join('colleges', 'academicyearcollege.college_id = colleges.college_id', 'left')
         ->join('universities', 'colleges.university_id = universities.university_id', 'left')
        // ->where('AcademicYears.status', 'active')
         ->where('colleges.status', 'active')
@@ -57,17 +57,17 @@ public function getActiveAcademicYearsWithCollegesAndUniversities()
                 'college_id' => $collegeId,
             ];
         }
-        $this->db->table('AcademicYearCollege')->insertBatch($data);
+        $this->db->table('academicyearcollege')->insertBatch($data);
     }
 
     public function deleteCollegesForAcademicYear($academicYearId)
     {
-        $this->db->table('AcademicYearCollege')->where('academic_year_id', $academicYearId)->delete();
+        $this->db->table('academicyearcollege')->where('academic_year_id', $academicYearId)->delete();
     }
 
     public function getCollegeIdsForAcademicYear($academicYearId)
     {
-        return $this->db->table('AcademicYearCollege')
+        return $this->db->table('academicyearcollege')
             ->where('academic_year_id', $academicYearId)
             ->get()->getResultArray();
     }
