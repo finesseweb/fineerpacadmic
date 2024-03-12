@@ -4,6 +4,7 @@
   $accesslevel = new accessLevel();
   $roleValue = session('areas');
 
+
 ?>
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
