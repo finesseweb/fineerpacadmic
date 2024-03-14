@@ -11,14 +11,14 @@ class FeeStructureItemModel extends Model
 
     protected $allowedFields = [
         'stucture_id',
-		//'grand_term1_result',
-		//'grand_term2_result',
-		//'grand_term3_result',
-		///'grand_term4_result',
-		//'grand_term5_result',
-		//'grand_term6_result',
-		//'grand_term7_result',
-		//'grand_term8_result',
+		'grand_term1_result',
+		'grand_term2_result',
+		'grand_term3_result',
+		'grand_term4_result',
+		'grand_term5_result',
+		'grand_term6_result',
+		'grand_term7_result',
+		'grand_term8_result',
 		'total_grand_value'
        
 		
@@ -127,5 +127,12 @@ class FeeStructureItemModel extends Model
         return  $this->db->table('feestructuredetails')
                          ->where('fee_structure_id', $structure)
                          ->delete();
+    }
+    
+    
+    public function insertVal($feeData){
+        $insert_id= $this->db->table('feestructure_item_details')
+                 ->insert($feeData);
+       return $insert_id;
     }
 }

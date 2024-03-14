@@ -186,14 +186,19 @@ class FeeStructureController extends Controller
 					  ];
 			        for($i=0;$i<count($terms_id); $i++){
                         
-                     //   $grand_terms =  "grand_term".($i+1)."_result";
-                      //  $grand_results = "grand_result".($i+1);
-                       // $fee_data[$date] = $terms_fee[$date];
-                      //  $fee_data [$grand_terms] = $terms_fee[$grand_results][$key];
+                        $grand_terms =  "grand_term".($i+1)."_result";
+                        $grand_results = "grand_result".($i+1);
+//                        $fee_data[$date] = $terms_fee[$date];
+                        $fee_data [$grand_terms] = $terms_fee[$grand_results][$key];
+                    }
+                  
+                    if(!$feestructureitemModel->insertVal($fee_data)){
+                        echo "Data not insert into fee Structure table";die; 
+                        
                     }
                      // $feestructureitemModel->delete(array('stucture_id =?' =>  $id));
 				  // print_r($this->feestructureitemModel); die();
-                    $feestructureitemModel->save($fee_data);
+//                    $feestructureitemModel->save($fee_data);
 					//if($feestructureitemModel->save($fee_data)){
 					//return true;
 					//		}else{
@@ -207,7 +212,6 @@ class FeeStructureController extends Controller
 			 $terms = $this->request->getPost('terms');
 			
 			$datacategorys = $this->feescategoryModel->findAllActivefeesCategory();
-			 echo "<pre>"; print_r($_POST); die();
 			
 			for ($i = 0; $i < count($datacategorys); $i++) {
 				
