@@ -15,8 +15,11 @@ class FeeStructureDetailsModel extends Model
 		'amount',
 		'status',
 		'college_id',
-		'caste_category_id'
-       
+		'caste_category_id',
+        'term_id',
+		'fee_category_id',
+		'fee_head_total',
+		'total_cat_value'
 		
     ];
 
@@ -134,4 +137,31 @@ class FeeStructureDetailsModel extends Model
                          ->where('fee_structure_id', $structure)
                          ->delete();
     }
+	
+	public function getItemRecords($structure_id)  //company_id is main Company Id
+
+    {       
+        return  $this->db->table('feestructuredetails')
+                         ->where('fee_structure_id', $structure_id)
+                        ->get()->getResultArray();
+
+    } 
+	
+	public function getamountbycat12($StrucID,$catID,$cmnterms)
+    {
+		//echo $cmnterms; die();
+		
+       return  $this->db->table('feestructuredetails')
+		                ->where('feestructuredetails.status','active')
+						->where('feestructuredetails.fee_structure_id',$StrucID)
+						->where('feestructuredetails.fee_category_id',$catID)
+						//->where('fee_head_id',$headID)
+						->where('feestructuredetails.term_id',$cmnterms)
+                        ->get()->getRowArray();
+       // echo $select   ; die();               
+ 
+    }
+
+	
+	 
 }

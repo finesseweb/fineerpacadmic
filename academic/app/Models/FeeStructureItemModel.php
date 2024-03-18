@@ -124,9 +124,18 @@ class FeeStructureItemModel extends Model
 	
 	 public function DeleteRecord($structure)
     {
-        return  $this->db->table('feestructuredetails')
-                         ->where('fee_structure_id', $structure)
+        return  $this->db->table('feestructure_item_details')
+                         ->where('stucture_id', $structure)
                          ->delete();
+    }
+	
+	public function getStructureRecords($structure_id)  //company_id is main Company Id
+
+    {       
+	   return  $this->db->table('feestructure_item_details')
+                         ->where('stucture_id', $structure_id)
+                         ->get()->getRowArray();
+
     }
     
     

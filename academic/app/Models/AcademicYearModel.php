@@ -84,9 +84,20 @@ public function getActiveAcademicYearsWithCollegesAndUniversities()
 	public function getCastStatus($academicID)
     {
         return $this->db->table('academicyears')
-		                   ->where('status','active')
-						    ->where('academic_year_id',$academicID)
-                             ->get()->getRowArray();
+		        ->where('status','active')
+				->where('academic_year_id',$academicID)
+                ->get()->getRowArray();
+                          
+
+    }
+	
+	public function getcollege($collegeID)
+    {
+        return $this->db->table('academicyears')
+		         ->join('academicyearcollege', 'academicyears.academic_year_id = academicyearcollege.academic_year_id', 'left')
+		        ->where('status','active')
+				->where('academicyearcollege.college_id',$collegeID)
+                ->get()->getResultArray();
                           
 
     }

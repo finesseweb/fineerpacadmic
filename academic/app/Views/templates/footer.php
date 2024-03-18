@@ -86,6 +86,39 @@ $("#academic_year_id").change(function(){
 });
 
 
+$("#college_id").change(function(){
+	var college = $(this).val();
+	 $.ajax({
+      type: "POST",
+      url: "<?= base_url()?>academicyear/getcollege",
+      data: { college: college},
+      success: function (result) {
+         
+		 $('#collegeacad_id').html(result);
+	  
+	  }
+ });
+
+});
+
+
+$("#collegeacad_id").change(function(){
+	var college = $('#college_id').val();
+	var acad = $(this).val();
+	 $.ajax({
+      type: "POST",
+      url: "<?= base_url()?>feestructure/getdatacollegewise",
+      data: { college: college,acad:acad},
+      success: function (result) {
+         
+		 $('#getalldatacollegwise').html(result);
+	  
+	  }
+ });
+
+});
+
+
 });
 
 $(function() {
@@ -101,21 +134,21 @@ $(function() {
     });
 });	
 
-$('.showdetails').hide();
-$('#showbtndetails').hide();	
+//$('.showdetails').hide();
+//$('#showbtndetails').hide();	
 
-$('#showhidedetails').on("click", function(){
-$('.showdetails').show();
-$('#showbtndetails').show();
-$('#showhidedetails').hide();	
-});
+//$('#showhidedetails').on("click", function(){
+//$('.showdetails').show();
+//$('#showbtndetails').show();
+//$('#showhidedetails').hide();	
+//});
 
-$('#showbtndetails').on("click", function(){
-$('.showdetails').hide();
-$('#showhidedetails').show();
-$('#showbtndetails').hide();
+//$('#showbtndetails').on("click", function(){
+//$('.showdetails').hide();
+//$('#showhidedetails').show();
+//$('#showbtndetails').hide();
 	
-});
+//});
 
 
    function select_term_fees(val, num, i, category_id, termno) {
@@ -186,6 +219,30 @@ $('#showbtndetails').hide();
         $('#grand_total').html(grand);
         $('#grandtotal_total').val(grand);
     }
+
+
+
+ $(".showhidedetails").click(function () {
+
+        var id = $(this).attr("structid");
+//alert(id);
+        $.ajax({
+
+            type: "POST",
+
+            url: "<?= base_url()?>feestructure/ajaxGetFeeDetailsView",
+
+            data: {id: id}
+
+        }).done(function (data) {
+
+            $(".feeclose").hide();
+//$("tr.structid"+id).empty()
+            $(data).insertAfter("tr.structid" + id);
+
+        });
+
+    });
 
 	</script>
     <!-- End custom js for this page -->

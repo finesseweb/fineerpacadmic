@@ -132,7 +132,7 @@
                                      
 							?>
 							<td><span id="feeheads_total<?php echo $m; ?>"><?php if($headamount) echo $headamount['fee_head_total']; ?> </span>
-                            <input type="hidden" name="terms[feeheads_total_val<?php echo $feescategory['fee_category_id']; ?>][]" id="feeheads_total_val<?php echo $m; ?>" value="<?php echo!empty($term1_result['feeheads_total']) ? $term1_result['feeheads_total'] : 0; ?>" /> 
+                            <input type="hidden" name="terms[feeheads_total_val<?php echo $feescategory['fee_category_id']; ?>][]" id="feeheads_total_val<?php echo $m; ?>" value="<?php echo!empty($headamount['fee_head_total']) ? $headamount['fee_head_total'] : 0; ?>" /> 
                             </td>
 							</tr>
 							<?php } $m++;}?>
@@ -157,17 +157,24 @@
                                                           
 							</tr>
 							<?php  $i++;} //$k++ ///;endforeach;?>
-							<tr><td colspan="2"> Grand Total Amount</td>
+							<tr><td colspan="2">  <?php $lets = "";
+                                  $cats = count($feescategorys);
+								  for ($l = 0; $l < $cats; $l++) {
+                                    $lets = $lets . $letters[$l] . '+';
+                                     }
+                                     echo 'Grand Total (' . rtrim($lets, '+') . ') (Rs.)';  
+								  
+								  ?></td>
 							<?php 	$n=1;foreach($semesters as $semester) :
-							   $semester="t".$n; ?>
-						     
+							   $semester="t".$n;  $feestructureItem;?>
+						    
 							<td>
-							<span id="term<?= $n; ?>_grandtotal_" ><?php //echo $feesstructures["total_grand_value".$n]; ?></span>
-							<input type="hidden" id="grand_result<?= $n; ?>" name="terms_fee[grand_result<?=$n?>][]" value="" class="form-control" readonly></td>
+							<span id="term<?= $n; ?>_grandtotal_" ><?php echo $feestructureItem["grand_term" . $n . "_result"]; ?></span>
+							<input type="hidden" id="grand_result<?= $n; ?>" name="terms_fee[grand_result<?=$n?>][]" value="<?php echo $feestructureItem["grand_term" . $n . "_result"]; ?>" class="form-control" readonly></td>
 							<?php $n++; endforeach; ?>
 							 <td bgcolor="#b3ecff" style="text-align:right;">
-							 <span id="grand_total" ><?php //echo $feesstructures['total_grand_value1']; ?></span>
-                              <input type="hidden" name="terms_fee[grandtotal_total][]" id="grandtotal_total" value="<?php //echo!empty($feesstructures['total_grand_value1']) ? $feesstructures['total_grand_value1'] : 0; ?>"/></td>
+							 <span id="grand_total"><?php echo $feestructureItem['total_grand_value']; ?></span>
+                              <input type="hidden" name="terms_fee[grandtotal_total][]" id="grandtotal_total" value="<?php echo!empty($feestructureItem['total_grand_value']) ? $feestructureItem['total_grand_value'] : 0; ?>"/></td>
                                                      
 							</tr>
 							</tbody>

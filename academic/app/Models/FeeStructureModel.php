@@ -50,11 +50,37 @@ class FeeStructureModel extends Model
     
     public function findAllActivefeesstructure()
     {
-        return $this->select('feestructures.*,academicyears.academic_year_code,colleges.college_name')
+        return $this->select('feestructures.*,academicyears.academic_year_code,colleges.college_name,courses.course_name')
              ->join('academicyears', 'feestructures.academic_year_id = academicyears.academic_year_id')
-			// ->join('castecategory', 'feestructures.caste_category_id = castecategory.caste_category_id')
+			 ->join('courses', 'feestructures.course_id = courses.course_id')
 			 ->join('colleges', 'feestructures.college_id = colleges.college_id')
-            ->where('feestructures.status', 'active')
+             ->where('feestructures.status', 'active')
+			 ->limit('10')
+			//->groupBy('academic_year_id')
+            ->findAll();
+    }
+	
+	
+	public function getAcademicId($structure_id)  //company_id is main Company Id
+
+    {       
+        return  $this->db->table('feestructures')
+                         ->where('fee_structure_id', $structure_id)
+                        ->get()->getRowArray();
+
+    }
+	
+	public function getStructureRecords($college,$acad)  //company_id is main Company Id
+
+    {       
+        return $this->select('feestructures.*,academicyears.academic_year_code,colleges.college_name,courses.course_name')
+             ->join('academicyears', 'feestructures.academic_year_id = academicyears.academic_year_id')
+			 ->join('courses', 'feestructures.course_id = courses.course_id')
+			 ->join('colleges', 'feestructures.college_id = colleges.college_id')
+             ->where('feestructures.status', 'active')
+			 ->where('feestructures.college_id', $college)
+			 ->where('feestructures.academic_year_id', $acad)
+			 ->limit('10')
 			//->groupBy('academic_year_id')
             ->findAll();
     }

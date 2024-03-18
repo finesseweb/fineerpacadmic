@@ -179,7 +179,9 @@ $routes->post('/academicyears/update/(:num)', 'AcademicYearController::update/$1
 $routes->get('/academicyears/delete/(:num)', 'AcademicYearController::delete/$1');
 $routes->get('academicyear/getCollegesByUniversity/(:num)', 'AcademicYearController::getCollegesByUniversity/$1');
 $routes->match(['get', 'post'], 'academicyear/getcast', 'AcademicYearController::getcast'); // Year
-
+$routes->match(['get', 'post'], 'academicyear/getcollege', 'AcademicYearController::getcollege'); // Year
+$routes->match(['get', 'post'], 'feestructure/ajaxGetFeeDetailsView', 'FeeStructureController::ajaxGetFeeDetailsView'); // fee
+$routes->match(['get', 'post'], 'feestructure/getdatacollegewise', 'FeeStructureController::getdatacollegewise'); // fee
 
 
 //});

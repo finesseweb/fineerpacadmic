@@ -223,4 +223,23 @@ public function update($id)
          echo $cast['cast_cat']; die();
 		 }
     }
+	
+	public function getcollege()
+    {
+		$data='';
+		if ($this->request->isAJAX()) {
+          ///$query = service('request')->getPost('acad');
+         $collegeID= $this->request->getPost('college');
+           
+		
+        $academicyear = $this->academicYearModel->getcollege($collegeID);
+		$data="<option value=''>Select</option>";
+		foreach($academicyear as $acad){
+			$data.="<option value='".$acad['academic_year_id']."'>".$acad['academic_year_code']."</option>";
+		}
+		echo $data;
+		//print_r($academicyear as $acad); die();
+         //echo $cast['cast_cat']; die();
+		 }
+    }
 }
